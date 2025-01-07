@@ -1,0 +1,164 @@
+/* .researchimg{
+    height: 400px;
+}
+.whytxt{
+    font-size: 75px !important;
+    font-weight: 800;
+    font-family: 'Oswald', sans-serif !important;
+}
+
+.boardpart{
+    background: linear-gradient(45deg,#17BE81,#09BBCC);
+}
+.boardcardposition{
+    font-size: 16px;
+    color: var(--color-testimonial);
+}
+
+.boardcard {
+    margin: 8px !important;
+    border: 0px;
+      
+}
+.linkedicon{
+    color: #0A66C2;
+}
+
+.foundername{
+    color: #053539;
+}
+.founderqualification{
+font-size: 22px;
+}
+.founderpart{
+    font-family: 'Heebo', sans-serif;
+}
+
+
+.founderimg{
+    height: 400px;
+}
+
+.memberbio{
+    color: #0D868F !important;
+    font-weight: 500;
+}
+
+.boardcardtitle{
+font-size: 24px;
+}
+
+@media (min-width:426px) and (max-width:769px){
+    .boardcard{
+        height: 550px;
+    }
+}
+   */
+
+
+
+
+.researchimg{
+    height: 400px;
+}
+.whytxt{
+    font-size: 85px !important;
+    font-weight: 800;
+    font-family: 'Oswald', sans-serif !important;
+}
+.oviyaheading{
+    font-size: 65px !important;
+    font-weight: 500;
+    font-family: 'Oswald', sans-serif !important;
+}
+.aboutfounder{
+    background: linear-gradient(to right,#17BE81 10%,#09BBCC)
+}
+.medsafe{
+    font-size: 35px;
+    font-weight: 600;
+}
+.medsafepara{
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 400;
+    font-family: 'Heebo', sans-serif;
+}
+.boardpart{
+    background: linear-gradient(to right,#17BE81,#09BBCC);
+}
+.boardcardposition{
+    font-size: 14px;
+    color: var(--color-testimonial);
+}
+
+.boardcard {
+    font-family: 'Barlow', sans-serif;
+    border: 0px;
+    /* width: 290px; */
+      
+}
+.linkedicon{
+    color: #0A66C2;
+}
+
+.foundername{
+    color: #053539;
+    font-size: 20px;
+}
+.founderqualification{
+font-size: 22px;
+}
+.founderpart{
+    font-family: 'Heebo', sans-serif;
+}
+
+
+.founderimg{
+    height: 400px;
+}
+.aboutfounder p{
+    text-align: justify;
+}
+.memberbio{
+    color: #0D868F !important;
+    font-weight: 600;
+    font-size: 14px;
+    font-family: 'Barlow', sans-serif;
+}
+
+.boardcardtitle{
+font-size: 22px;
+font-family: 'Barlow', sans-serif;
+font-weight: 600;
+}
+
+@media (min-width:426px) and (max-width:769px){
+    .boardcard{
+        height: 450px;
+    }
+    
+    .whytxt {
+        font-size: 30px; /* Adjust as necessary */
+    }
+    
+}
+.about1img{
+    height: 360px;
+}
+@media (max-width:400px){
+    .researchimg{
+        max-width: 250px;
+        max-height: 250px;
+        margin: 10px;
+    } 
+}
+@media (min-width:401px) and (max-width:769px){
+    .researchimg{
+        max-width: 300px;
+        max-height: 300px;
+        margin: 10px;
+    }
+   
+}
+  

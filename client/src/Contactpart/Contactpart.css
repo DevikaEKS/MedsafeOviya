@@ -1,0 +1,17 @@
+.iconclr {
+    color:#64B556;
+}
+
+.text-size{
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+}
+.paracontact{
+    font-size: 12px;
+}
+@media (max-width: 992px) {
+    .text-size{
+        font-size: 11px;
+    }
+}

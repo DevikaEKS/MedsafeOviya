@@ -1,0 +1,102 @@
+.custom-link {
+    text-decoration: none; /* Removes the underline if any */
+    outline: none; /* Removes the focus outline */
+    font-weight: 500;
+  }
+
+.navbarbg{
+    background:linear-gradient(to right ,var(--navgradientfrom),var(--navgradientto));
+    color: white;
+      position: sticky;
+      top: 0; /* Ensures it's pinned to the top */
+      z-index: 1020; /* Higher than most content layers */
+
+}
+
+
+
+
+/* Assuming 'navtext' is for your navigation text */
+.navtext ,.navtext2{
+    color: white !important;
+    font-size: 16px;
+    font-weight: 500; 
+  }
+  
+  .navtext:hover {
+    color: white !important; /* Set your desired hover color */
+  }
+  
+  /* If you want to override other hover effects like links changing color */
+  .navtext a:hover {
+    color: white !important;
+  }
+  
+
+  .navtext1{
+    color: black;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .navtext1:hover{
+    color: black;
+    background-color: red;
+  }
+
+
+  
+  
+  .navtext {
+    position: relative;
+    display: inline-block;
+  
+  }
+  
+  .navtext:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 8px !important;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45%; /* Small width for the underline */
+    height: 2px; /* Thickness of the underline */
+    background-color: #fff; /* Color of the underline */
+  }
+
+  .navtext2 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+  .logosize{
+    width: 250px;
+    height: 70px;
+  }
+  .navtext2:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%; /* Small width for the underline */
+    height: 2px; /* Thickness of the underline */
+    background-color: #fff; /* Color of the underline */
+  }
+
+
+
+  .navbar .dropdown-toggle::after {
+    color: white; 
+    font-size: 16px; 
+    margin-left: 2px; 
+  }
+
+
+
+
+  @media (max-width: 768px) {
+    .navtext:hover::after,
+    .navtext2:hover::after {
+      content: none; /* Remove the underline effect */
+    }
+  }

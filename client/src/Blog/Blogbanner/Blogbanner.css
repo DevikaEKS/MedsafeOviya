@@ -1,0 +1,39 @@
+
+.blogicon{
+
+    font-size:"22px";
+    vertical-align: "middle";
+    color:"#64B556"
+}
+
+.insightspart{
+    margin: 50px;
+}
+
+.readbtn{
+   color: var(--blog-linkcolor); 
+   
+}
+.readbtn:hover{
+    text-decoration: underline;
+}
+.blogtitle{
+    font-size: 20px !important;
+}
+/* .title-ellipsis {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+   */
+@media (max-width:768px){
+    .insightspart{
+        margin: 0px;
+    }   
+}
+
+
+  
