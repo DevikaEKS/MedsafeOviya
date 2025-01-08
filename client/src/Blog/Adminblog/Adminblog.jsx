@@ -221,6 +221,8 @@ import "./Adminblog.css";
 import { FaPlus } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Adminblog() {
   const [blogs, setBlogs] = useState([]);

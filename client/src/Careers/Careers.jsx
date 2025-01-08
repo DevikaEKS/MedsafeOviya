@@ -4,7 +4,7 @@ function Careers() {
   return (
     <div className='container-fluid contactpart text-center text-light'>
        <div className='py-5'>
-        <h1 className='text-light careershead pb-5'>CAREERS</h1>
+        <h1 className='text-light careershead pb-3'>CAREERS</h1>
         <h2 className='emptxt'>"Empowering Your Future:</h2>
         <h2 className='emptxt'>Explore Exciting Career Opportunities with Us!"</h2>
         

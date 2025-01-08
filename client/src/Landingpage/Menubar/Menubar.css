@@ -43,12 +43,10 @@
 body, html {
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Ensure no scrollable x-axis */
+  overflow-x: hidden; 
 }
 
-.container {
-  overflow: visible; /* Allow sticky to function */
-}
+
 .navtext {
   position: relative;
   display: inline-block;

@@ -10,3 +10,10 @@
 .abttxt{
   color: var(--oviya-color);
 }
+
+
+.custom-video {
+  background: transparent;
+  border: 0 !important;
+  outline: 0 !important;
+}

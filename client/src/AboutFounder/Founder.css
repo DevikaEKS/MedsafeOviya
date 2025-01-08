@@ -1,0 +1,97 @@
+.foundername{
+    color: #053539;
+    font-size: 30px;
+    text-align: start;
+}
+.founderqualification{
+font-size: 24px;
+}
+.founderpart{
+    font-family: 'Heebo', sans-serif;
+}
+
+
+.founderimg{
+    height: 400px;
+}
+.aboutfounder p{
+    text-align: justify;
+}
+
+@media (max-width:426px){
+    .founderimg{
+        max-height: 300px;
+    }
+    .foundername{
+        color: #053539;
+        font-size: 30px;
+        text-align: center;
+    }  
+}
+
+.founderimg {
+    width: 100%;
+    height: auto;
+    /* max-width: 100%; */
+    border-radius: 10px;
+  }
+  
+ 
+  .philosophyhead {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  .text-justify {
+    text-align: justify;
+  }
+  
+  .linkedicon {
+    font-size: 1.5rem;
+  }
+  
+  .aboutfounder {
+    padding: 0;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    
+    .founderqualification {
+      font-size: 1rem;
+    }
+  
+    .philosophyhead {
+      font-size: 2.5rem;
+    }
+  
+    
+    .founderimg {
+      max-width: 90%;
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .founderqualification {
+      font-size: 1rem;
+ }
+    .philosophyhead {
+      font-size: 2rem;
+    }
+  
+    .founderimg {
+      max-width: 100%;
+    }
+  }
+  
+  /* Responsive for SVG */
+  @media (max-width: 768px) {
+    .position-absolute {
+      width: 100%;
+      height: 100%;
+      top: auto;
+      bottom: auto;
+    }
+  }
+  

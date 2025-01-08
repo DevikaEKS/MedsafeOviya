@@ -3,10 +3,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css"; 
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
 import Footer from './Landingpage/Footer/Footer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Contactpart from './Contactpart/Contactpart';
@@ -37,6 +34,9 @@ import Adminview from './Blog/Adminview/Adminview';
 import Privact from './Privacy/Privact';
 import Forgotpassword from './Forgotpassword/Forgotpassword';
 import News from './Blog/News/News';
+import DownloadForm from './Downloads/DownloadForm';
+import Downloads from './Downloads/Downloads';
+
 function App() {
 
 
@@ -44,7 +44,7 @@ function App() {
     <>
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={ [<Contactpart/>,<Menubar/>,<Aboutpage/>,<Philosophy/>,<OurServices/>,<Testimonial/>,<Blogbanner/>,<Footer/>,<Whatsapp/>]}/>
+      <Route path="/" element={ [<Contactpart/>,<Menubar/>,<Aboutpage/>,<Philosophy/>,<OurServices/>,<Testimonial/>,<Blogbanner/>,<Videopart/>,<Footer/>,<Whatsapp/>]}/>
       <Route path='/services' element={[<Contactpart />,<Menubar />,<Footer />,<Whatsapp/>]}/>
       <Route path='/tab' element={<Tablet/>}/>
       <Route path='/about-us' element={[<Contactpart/>,<Menubar/>,<AboutFounder/>,<Footer/>,<Whatsapp/>]}/>
@@ -63,6 +63,7 @@ function App() {
  <Route path="/disclaimer-and-privacy-policy" element={[<Contactpart/>,<Menubar/>,<Privact/>,<Footer/>,<Whatsapp/>]}/>
  <Route path='/forgot-password' element={<Forgotpassword/>}/>
  <Route path='/newsletter' element={<News/>}/>
+ <Route path="/downloads" element={[<Contactpart/>,<Menubar/>,<Downloads/>,<Footer/>,<Whatsapp/>]}/>
     </Routes>
 
     </BrowserRouter>

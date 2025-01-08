@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import DynamicServices from './DynamicServices'
 import AccordianSection from './AccordianSection'
 
 const DrugSafety = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+  }, []);
   return (
     <div >
         <DynamicServices index = {0} />

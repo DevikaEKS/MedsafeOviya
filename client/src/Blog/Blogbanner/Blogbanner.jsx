@@ -213,7 +213,7 @@ function Blogbanner() {
     {
       id: 1,
       blog_image: blogim1, // Use the imported image here
-      title: "Understanding SAP for Business",
+      title: "Oviya MedSafe – Convincing Leaders to Constitute Pharmacovigilance",
       category_id: 1,
       unique_identifier: "sap-blog-101",
       time:"March 2024",
@@ -222,7 +222,7 @@ function Blogbanner() {
     {
       id: 2,
       blog_image: blogim1, // Make sure this is the correct relative path or import
-      title: "Latest Trends in IT",
+      title: "Oviya MedSafe – Accomplishing Pharmacovigilance Equilibrium Since 2012",
       category_id: 2,
       unique_identifier: "it-blog-202",
       time:"March 2024",
@@ -232,7 +232,7 @@ function Blogbanner() {
       id: 3,
       blog_image:
       blogim1, // External image URL
-      title: "Digital Marketing Strategies for 2025",
+      title: "Oviya MedSafe – Perfecting Professionalism in Pharmacovigilance",
       category_id: 3,
       unique_identifier: "digital-marketing-blog-303",
       time:"March 2024",
@@ -270,7 +270,7 @@ function Blogbanner() {
         ) : (
           blogs.map(
             (blog) => (
-              <div key={blog.id} className="col-sm-12 col-lg-4 my-2">
+              <div key={blog.id} className="col-sm-12 col-lg-4 mb-2">
                 <div className="card colourcard mt-3 h-100 rounded-3">
                   <img
                     src={blog.blog_image} // Use the correct image path here
@@ -289,14 +289,16 @@ function Blogbanner() {
                     <Link className="px-2 readbtn my-2" onClick={() =>
                         handleReadMoreClick(blog.category_id, blog.unique_identifier)
                       }>Read More</Link>
-                    <div className="py-3"></div>
                   </div>
                 </div>
+              
               </div>
             )
           )
         )}
       </div>
+      <div className="text-center pb-4"> <Link to="/newsletter" style={{color:"#64B556"}}>View All</Link></div>
+     
     </div>
   );
 }

@@ -56,8 +56,6 @@
 
 // export default Philosophy;
 
-
-
 import React from 'react'
 import './Philosophy.css'
 import bulb from '../../assets/bulb.png';
@@ -70,9 +68,10 @@ const Philosophy = () => {
       <div className='container-pad'>
         <h1 className='heading text-center text-white' style={{fontSize: '50px'}}>Philosophy</h1>
       </div>
-
-      <div className='d-flex flex-column card-container-pad flex-lg-row gap-4 gap-lg-10 justify-content-center align-items-center'>
+    
+      <div className='d-flex flex-column flex-lg-row gap-4 gap-lg-10 justify-content-center card-container-pad align-items-center'>
         {/* Card 1 */}
+        
         <div className="card-container">
             {/* Circle Animation */}
             <span className="circle-animation"></span>

@@ -42,7 +42,7 @@ function Addblog() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const blogData = {
+    const newsData = {
       category,
       title,
       shortTitle,
@@ -52,7 +52,7 @@ function Addblog() {
     };
   
     // Log the data to the console
-    console.log("Blog Data Submitted:", blogData);
+    console.log("Blog Data Submitted:", newsData);
     const formData = new FormData();
     formData.append("categoryId", category);
     formData.append("title", title);
@@ -108,6 +108,9 @@ function Addblog() {
                   onChange={(e) => setCategory(e.target.value)}
                 >
                   <option value="">Select a category</option>
+                  <option value="1">Newsletter</option>
+                  <option value="2">Announcement</option>
+                  <option value="3">Article</option>
                   {categories.map((cat) => (
                     <option key={cat.id} value={cat.id}>
                       {cat.category_name}
@@ -201,9 +204,7 @@ function Addblog() {
                 />
               </div>
             </div>
-
-         
-           
+          
 
             {/* Submit Button */}
             <div className="row">

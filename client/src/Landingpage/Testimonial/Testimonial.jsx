@@ -47,7 +47,7 @@ const testimonials = [
 function Testimonial() {
   return (
     <div className="container-fluid py-5 testimonialpart">
-      <h1 className="mb-5 philosophyhead text-light text-center">What Clients Say</h1>
+      <h1 className="mb-5 subhead2 text-light text-center">What Clients Say</h1>
 
       <Slider {...settings}>
         {testimonials.map((testimonial, index) => (

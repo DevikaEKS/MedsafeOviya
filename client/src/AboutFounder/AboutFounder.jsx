@@ -56,7 +56,7 @@ function AboutFounder() {
             </div>
         </div>
 
-        <div className='row mx-1 mx-md-5 mt-5'>  
+        <div className='row mx-1 mx-md-5 mt-5 pb-4'>  
         <div className='col-sm-12 col-md-6'>
         <h1 className='oviyaheading' ><span className='whytxt'>WHY </span>Oviya<br/> MedSafe ?</h1>
         <img src={research} className='researchimg'/>

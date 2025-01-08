@@ -1,5 +1,9 @@
 .formbg{
-    background: linear-gradient(45deg,#1ABE6F,#07BBD4);
+    /* background: linear-gradient(45deg,#1ABE6F,#07BBD4); */
+    background: linear-gradient(135deg, #0D868F, #042629);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3), -5px -5px 10px rgba(255, 255, 255, 0.1);
+    
+    color: white;
     margin: 10px;
 }
 

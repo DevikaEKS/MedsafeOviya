@@ -91,8 +91,8 @@ import './Menubar.css';
 
 function Menubar() {
   return (
-    <div className='position-sticky top-0'>
-      <Navbar expand="lg" className="navbarbg p-0 m-0 w-100 w-100">
+   
+      <Navbar expand="lg" className="navbarbg p-0 m-0 w-100 w-100"  style={{zIndex:"3000"}}>
       <Container className='p-0 m-0'>
         {/* Logo aligned left */}
         <Navbar.Brand href="#home" className="d-flex p-0 m-0">
@@ -116,7 +116,7 @@ function Menubar() {
               <NavDropdown.Item as={Link} to="/strategic-partnerships" className='navtext1'>Strategic Partnerships</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link as={Link} to="/newsletter"  className='navtext px-3'>NEWS</Nav.Link>
-            <Nav.Link as={Link} to="/careers" href="#link" className='navtext px-3'>DOWNLOADS</Nav.Link>
+            <Nav.Link as={Link} to="/downloads" href="#link" className='navtext px-3'>DOWNLOADS</Nav.Link>
             <Nav.Link as={Link} to="/careers" className='navtext px-3'>CAREERS</Nav.Link>
             <Nav.Link as={Link} to="/contact" className='navtext px-3'>CONTACT</Nav.Link>
  
@@ -155,7 +155,7 @@ function Menubar() {
         </Navbar.Collapse>
       </Container >
     </Navbar>
-    </div>
+   
     
   );
 }

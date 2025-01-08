@@ -49,7 +49,6 @@
 
 
 
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -91,11 +90,19 @@ function Login() {
       isValid = false;
     }                                                                                                                                                                                                                               
 
-    axios.post('http://192.168.252.163:5000/api/auth/login', {
+    axios.post('http://192.168.139:248:5000/api/auth/login', {
       email,
       password,
     }).then(response => {
-      console.log('Login successful:', response.data);
+      if(response.data.message==="Login successful"){
+        if(response.data.user.id===1){
+
+          window.location.href='/addblog'
+        }
+        else if(response.data.user.id===2){
+          window.location.href='/addblogs'
+        }
+      }
     }).catch(error => {
       if (error.response) {
         console.error('Login failed:', error.response.data);

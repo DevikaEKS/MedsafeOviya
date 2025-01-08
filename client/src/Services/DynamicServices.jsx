@@ -103,6 +103,7 @@ import './services.css'
 
 
 const DynamicServices = ({ index }) => {
+  
   return (
     <div
       id={servicesData[index]?.id}

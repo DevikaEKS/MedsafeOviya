@@ -102,24 +102,7 @@ font-size: 24px;
     color: #0A66C2;
 }
 
-.foundername{
-    color: #053539;
-    font-size: 20px;
-}
-.founderqualification{
-font-size: 22px;
-}
-.founderpart{
-    font-family: 'Heebo', sans-serif;
-}
 
-
-.founderimg{
-    height: 400px;
-}
-.aboutfounder p{
-    text-align: justify;
-}
 .memberbio{
     color: #0D868F !important;
     font-weight: 600;
@@ -152,6 +135,10 @@ font-weight: 600;
         max-height: 250px;
         margin: 10px;
     } 
+    .about1img{
+        max-width: 300px;
+        max-height: 250px;
+    }  
 }
 @media (min-width:401px) and (max-width:769px){
     .researchimg{
