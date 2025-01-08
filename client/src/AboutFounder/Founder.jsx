@@ -45,7 +45,7 @@ import BOTTOM from "../assets/aboutBottom.png";
 
 function Founder() {
   return (
-    <div className='position-relative container-fluid aboutfounder text-light founderpart '>
+    <div className='position-relative container-fluid aboutfounder text-light founderpart'>
         <div className='container mx-5 text-justify'>
         <h1 className='text-light text-center philosophyhead'>Our Founder</h1>
         <div className='row mx-1 mx-md-5'>

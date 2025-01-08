@@ -31,12 +31,12 @@ United Kingdom</p>
               <h5 className='footerhead py-3'>Explore</h5>
               <Link to={"/"} className='text-decoration-none text-light'><p>Home</p></Link>
               <Link to={"/"} className='text-decoration-none text-light'><p>Who we are</p></Link>
-              <Link className='text-decoration-none text-light'><p>Services</p></Link>
+              <Link to={"/drug-safety-services"} className='text-decoration-none text-light'><p>Services</p></Link>
               <Link className='text-decoration-none text-light'><p>News</p></Link>
               <Link className='text-decoration-none text-light'><p>Downloads</p></Link>
               <Link  to={"/careers"} className='text-decoration-none text-light'><p>Careers</p></Link>
               <Link to={"/contact"} className='text-decoration-none text-light'><p>Contact</p></Link>
-              <Link className='text-decoration-none text-light'><p>Disclaimer & Privacy Policy</p></Link>
+              <Link to={"/disclaimer-and-privacy-policy"} className='text-decoration-none text-light'><p>Disclaimer & Privacy Policy</p></Link>
               </div>
             <div className='col-sm-12 col-md-6 col-lg-3'>
               <h4 className='footerhead py-3'>Services</h4>
@@ -62,16 +62,16 @@ United Kingdom</p>
               <a href="tel:+44-20-3393-6037" className='text-light text-decoration-none'>UK +44 20 3393 6037</a>
               </div>
                <div className='d-flex social-links py-5'>
-             <a href=''><CiFacebook className='icon'/></a>
-                     <a href='' > <FaXTwitter className='icon'/></a>
-                     <a href=''><AiOutlineYoutube/></a>
-             <a href=''><CiLinkedin/></a>
+             <a href='https://www.facebook.com/OviyaMedSafe'><CiFacebook className='icon'/></a>
+                     <a href='https://x.com/OviyaMedSafe' > <FaXTwitter className='icon'/></a>
+                     <a href='https://www.youtube.com/channel/UCJMIsvtEWEP0NwUalnRgODQ/videos'><AiOutlineYoutube/></a>
+             <a href='https://www.linkedin.com/company/oviya-medsafe/'><CiLinkedin/></a>
               </div>
               </div>  
         </div>
         <div className='d-flex flex-column justify-content-center align-items-center'>
         <p>Copyright © {years} Oviya MedSafe. All Rights Reserved.</p>
-        <a href='https://www.kggeniuslabs.com/' className='text-decoration-none'><p className='text-light '>Developed by KG Genius Labs</p></a>
+        <a href='https://www.kggeniuslabs.com/' className='text-decoration-none'><p className='text-light '>Designed and Developed by KG Genius Labs</p></a>
         </div>
     </div>
     </div>

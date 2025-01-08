@@ -20,12 +20,20 @@
 .careerssubhead{
     color: var(--subhead2-color);
 font-family: 'Oswald', sans-serif;
-font-size: 40px;
+font-size: 38px;
 
 }
 
 .emptxt{
     font-family: 'Heebo', sans-serif;
-    font-size: 40px;
+    font-size: 32px;
 }
 
+
+/* //careersdata */
+
+.careersdata p{
+font-size: 16px;
+font-family: 'Heebo', sans-serif;
+font-weight: 500;
+}

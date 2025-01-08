@@ -34,6 +34,9 @@ import Updateblog from './Blog/Updateblog/Updateblog';
 import Addblog from './Blog/Addblog/Addblog';
 import Adminblog from './Blog/Adminblog/Adminblog';
 import Adminview from './Blog/Adminview/Adminview';
+import Privact from './Privacy/Privact';
+import Forgotpassword from './Forgotpassword/Forgotpassword';
+import News from './Blog/News/News';
 function App() {
 
 
@@ -48,7 +51,7 @@ function App() {
       <Route path='/our-founder' element={[<Contactpart/>,<Menubar/>,<Founder/>,<Footer/>,<Whatsapp/>]}/>
       <Route path='/our-board' element={[<Contactpart/>,<Menubar/>,<BoardMembers/>,<Footer/>,<Whatsapp/>]}/>
       <Route path='/contact' element={[<Contactpart/>,<Menubar/>,<Contact/>,<Maparea/>,<Footer/>,<Whatsapp/>]}/>
-      <Route path='/medsafelogin' element={<Login/>}/>
+      <Route path='/medsafelogin' element={[<Contactpart/>,<Menubar/>,<Login/>,<Footer/>]}/>
       <Route path='/drug-safety-services' element={[<Contactpart/>,<Menubar/>,<DrugSafety/>,<Footer/>,<Whatsapp/>]}/>
       <Route path='/pharmacovigilance-consulting' element={[<Contactpart/>,<Menubar/>,<Pharmacovigilance/>,<Footer/>,<Whatsapp/>]}/>
       <Route path='/strategic-partnerships' element={[<Contactpart/>,<Menubar/>,<Partnerships/>,<Footer/>,<Whatsapp/>]}/>
@@ -56,8 +59,10 @@ function App() {
  <Route path="/updateblog" element={<Updateblog/>}/>
  <Route path='/addblog' element={<Addblog/>}/>
  <Route path='/adminblog' element={<Adminblog/>}/>
- <Route path='/adminview' element={<Adminview/>}/>
- 
+ <Route path='/news' element={<Adminview/>}/>
+ <Route path="/disclaimer-and-privacy-policy" element={[<Contactpart/>,<Menubar/>,<Privact/>,<Footer/>,<Whatsapp/>]}/>
+ <Route path='/forgot-password' element={<Forgotpassword/>}/>
+ <Route path='/newsletter' element={<News/>}/>
     </Routes>
 
     </BrowserRouter>

@@ -1,5 +1,5 @@
 .formbg{
-    background-color: #0D868F;
+    background: linear-gradient(45deg,#1ABE6F,#07BBD4);
     margin: 10px;
 }
 
@@ -16,7 +16,7 @@
 }
 
 .loginhead{
-    color: var(--blog-bgcolor);
+    color: var(#063539);
     font-size: 32px;
 }
 
