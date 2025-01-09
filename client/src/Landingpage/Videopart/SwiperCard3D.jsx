@@ -1,211 +1,99 @@
-// import React from 'react';
-// import { Swiper, SwiperSlide } from 'swiper/react';
-// import 'swiper/css';
-// import 'swiper/css/navigation';
-// import 'swiper/css/pagination';
-
-// import './SwiperCard.css';
-// import { Autoplay, Navigation } from 'swiper/modules';
-
-// function SwiperCard3D() {
-//   return (
-//     <div className="container-fluid">
-//       <div className="row">
-//         <Swiper
-//           modules={[Autoplay, Navigation]} // Add Navigation module for arrows
-//           slidesPerView={1} // Default to 1 slide on small devices
-//           loop={true}
-//           spaceBetween={30} // Space between slides
-//           autoplay={{
-//             delay: 5000,
-//             disableOnInteraction: false, // Keep autoplay active after interaction
-//           }}
-//           navigation={{
-//             nextEl: '.swiper-button-next', // Define the next button element
-//             prevEl: '.swiper-button-prev', // Define the previous button element
-//           }}
-//           breakpoints={{
-//             640: {
-//               slidesPerView: 1, // 1 slide on small devices
-//             },
-//             1024: {
-//               slidesPerView: 3, // 3 slides in a row on larger devices
-//             },
-//           }}
-//           className="mySwiper"
-//         >
-//           <SwiperSlide>
-//             <iframe
-//               width="300"
-//               height="216"
-//               src="https://www.youtube-nocookie.com/embed/tODGcCROgSc?rel=0&modestbranding=1&controls=1"
-//               title="Genius ERP - Live Tracking of Sales Orders"
-//               frameBorder="0"
-//               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-//               referrerPolicy="strict-origin-when-cross-origin"
-//               allowFullScreen
-//             ></iframe>
-//           </SwiperSlide>
-
-//           <SwiperSlide>
-//             <iframe
-//               width="300"
-//               height="216"
-//               src="https://www.youtube-nocookie.com/embed/tODGcCROgSc?rel=0&modestbranding=1&controls=1"
-//               title="Genius ERP - Live Tracking of Sales Orders"
-//               frameBorder="0"
-//               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-//               referrerPolicy="strict-origin-when-cross-origin"
-//               allowFullScreen
-//             ></iframe>
-//           </SwiperSlide>
-
-//           <SwiperSlide>
-//             <iframe
-//               width="300"
-//               height="216"
-//               src="https://www.youtube-nocookie.com/embed/tODGcCROgSc?rel=0&modestbranding=1&controls=1"
-//               title="Genius ERP - Live Tracking of Sales Orders"
-//               frameBorder="0"
-//               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-//               referrerPolicy="strict-origin-when-cross-origin"
-//               allowFullScreen
-//             ></iframe>
-//           </SwiperSlide>
-
-
-//           <SwiperSlide>
-//             <iframe
-//               width="350"
-//               height="216"
-//               src="https://https://youtu.be/ur9ePXO1GNI?rel=0&modestbranding=1&controls=1"
-//               title="Genius ERP - Live Tracking of Sales Orders"
-//               frameBorder="0"
-//               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-//               referrerPolicy="strict-origin-when-cross-origin"
-//               allowFullScreen
-//             ></iframe>
-//           </SwiperSlide>
-//         </Swiper>
-
-//         {/* Navigation buttons */}
-//         <div className="swiper-button-prev"></div>
-//         <div className="swiper-button-next"></div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default SwiperCard3D;
-
-
-
-
-
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import './SwiperCard.css'; // Ensure that the correct CSS file is being imported
+import 'swiper/css/autoplay';
+import { Pagination, Autoplay } from 'swiper/modules';
 
-import { Autoplay, Navigation } from 'swiper/modules';
+export default function SwiperCard3D() {
+  const videos = [
+    "https://www.youtube.com/embed/iifT9X6uIyA?rel=0&modestbranding=1&controls=1",
+    "https://www.youtube.com/embed/JKqM9XkZ17k?rel=0&modestbranding=1&controls=1",
+    "https://www.youtube.com/embed/dveQrSg4HQU?rel=0&modestbranding=1&controls=1",
+    "https://www.youtube.com/embed/jpneMtcNM5E?rel=0&modestbranding=1&controls=1",
+    "https://www.youtube.com/embed/R6lvatKwFMM?rel=0&modestbranding=1&controls=1",
+    "https://www.youtube.com/embed/-BhjTRU20dw?rel=0&modestbranding=1&controls=1",
+  ];
 
-function SwiperCard3D() {
+  // Function to extract video ID from YouTube embed URL
+  const getVideoId = (url) => {
+    const regex = /(?:youtube\.com\/(?:[^\/]+\/[^\/]+\/|(?:v|e(?:mbed)?)\/|\S+\/\S+\/)([A-Za-z0-9_-]{11}))|(?:youtu\.be\/([A-Za-z0-9_-]{11}))/;
+    const match = url.match(regex);
+    return match ? match[1] || match[2] : null;
+  };
+
   return (
-    <div className="container-fluid p-0 m-0">
-      
-      <div className="row ">
-        
-        <Swiper
-          modules={[Autoplay, Navigation]} // Add Navigation module for arrows
-          slidesPerView={1} // Default to 1 slide on small devices
-          loop={true}
-          spaceBetween={30} // Space between slides
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false, // Keep autoplay active after interaction
-          }}
-          navigation={{
-            nextEl: '.swiper-button-next', // Define the next button element
-            prevEl: '.swiper-button-prev', // Define the previous button element
-          }}
-          breakpoints={{
-            640: {
-              slidesPerView: 1, // 1 slide on small devices
-              height: 'auto',
-              width:"100%", // Full screen height on small devices
-            },
-            768: {
-              slidesPerView: 2, // 2 slides on tablet devices
-              height: 'auto', // Reset height for tablet view
-            },
-            1024: {
-              slidesPerView: 3, // 3 slides on larger devices
-              height: 'auto', // Reset height for larger devices
-            },
-          }}
-          className="mySwiper"
-        >
-          <SwiperSlide>
-            <iframe
-              width="317"
-              height="216"
-              src="https://www.youtube-nocookie.com/embed/tODGcCROgSc?rel=0&modestbranding=1&controls=1"
-              title="Genius ERP - Live Tracking of Sales Orders"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
-          </SwiperSlide>
+    <>
+      <Swiper
+        spaceBetween={10} // Minimized space for mobile
+        pagination={{
+          clickable: true,
+        }}
+        autoplay={{
+          delay: 3500, // Delay between slides in milliseconds
+          disableOnInteraction: false, // Continue autoplay after user interaction
+        }}
+        centeredSlides={true} // Center slides
+        breakpoints={{
+          // For small screens (e.g., mobile)
+          0: {
+            slidesPerView: 1, // Show 1 slide fully
+            spaceBetween: 0, // No gap between slides
+          },
+          // For medium screens (e.g., tablets)
+          768: {
+            slidesPerView: 2, // Show 2 slides
+            spaceBetween: 15,
+          },
+          // For large screens (e.g., desktops)
+          1024: {
+            slidesPerView: 3, // Show 3 slides
+            spaceBetween: 20,
+          },
+        }}
+        modules={[Pagination, Autoplay]}
+        className="mySwiper"
+      >
+        {videos.map((video, index) => {
+          const videoId = getVideoId(video); // Extract video ID for the YouTube link
 
-          <SwiperSlide>
-            <iframe
-              width="317"
-              height="216"
-              src="https://www.youtube-nocookie.com/embed/tODGcCROgSc?rel=0&modestbranding=1&controls=1"
-              title="Genius ERP - Live Tracking of Sales Orders"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
-          </SwiperSlide>
+          return (
+            <SwiperSlide key={index} className="swiper-slide-custom">
+              <a
+                href={`https://www.youtube.com/watch?v=${videoId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <iframe
+                  className="responsive-iframe"
+                  src={video}
+                  title={`Video ${index + 1}`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
+              </a>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
 
-          <SwiperSlide>
-            <iframe
-              width="317"
-              height="216"
-              src="https://www.youtube-nocookie.com/embed/tODGcCROgSc?rel=0&modestbranding=1&controls=1"
-              title="Genius ERP - Live Tracking of Sales Orders"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
-          </SwiperSlide>
+      <style jsx>{`
+        .swiper-slide-custom {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%; /* Occupy full width */
+        }
 
-          <SwiperSlide>
-            <iframe
-              width="317"
-              height="216"
-              src="https://www.youtube-nocookie.com/embed/tODGcCROgSc?rel=0&modestbranding=1&controls=1"
-              title="Genius ERP - Live Tracking of Sales Orders"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
-          </SwiperSlide>
-        </Swiper>
-
-        {/* Navigation buttons */}
-        <div className="swiper-button-prev"></div>
-        <div className="swiper-button-next"></div>
-      </div>
-    </div>
+        .responsive-iframe {
+          width: 100%;
+          padding:"40px 0px"; /* Make iframe take full width */
+          height: auto; /* Maintain aspect ratio */
+          margin: 10px;
+        }
+      `}</style>
+    </>
   );
 }
-
-export default SwiperCard3D;

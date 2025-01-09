@@ -1,62 +1,17 @@
-/* .researchimg{
-    height: 400px;
-}
-.whytxt{
-    font-size: 75px !important;
-    font-weight: 800;
-    font-family: 'Oswald', sans-serif !important;
-}
 
-.boardpart{
-    background: linear-gradient(45deg,#17BE81,#09BBCC);
+.abtparts{
+    background-image: url("../assets//hexbanner.png");
+    background-repeat: no-repeat;
+    background-size: 100vw;
 }
-.boardcardposition{
-    font-size: 16px;
-    color: var(--color-testimonial);
+.whytx{
+    color: var(--subhead2-color);
 }
-
-.boardcard {
-    margin: 8px !important;
-    border: 0px;
-      
+.ovtxt{
+    color: var(--subhead2-color);
+    font-size: 35px;
+    font-weight: 600;
 }
-.linkedicon{
-    color: #0A66C2;
-}
-
-.foundername{
-    color: #053539;
-}
-.founderqualification{
-font-size: 22px;
-}
-.founderpart{
-    font-family: 'Heebo', sans-serif;
-}
-
-
-.founderimg{
-    height: 400px;
-}
-
-.memberbio{
-    color: #0D868F !important;
-    font-weight: 500;
-}
-
-.boardcardtitle{
-font-size: 24px;
-}
-
-@media (min-width:426px) and (max-width:769px){
-    .boardcard{
-        height: 550px;
-    }
-}
-   */
-
-
-
 
 .researchimg{
     height: 400px;
@@ -66,6 +21,7 @@ height: 300px;
 }
 .whytxt{
     font-size: 85px !important;
+    color: var(--subhead2-color);
     font-weight: 800;
     font-family: 'Oswald', sans-serif !important;
 }
@@ -74,9 +30,7 @@ height: 300px;
     font-weight: 500;
     font-family: 'Oswald', sans-serif !important;
 }
-.aboutfounder{
-    background: linear-gradient(to right,#17BE81 10%,#09BBCC)
-}
+
 .medsafe{
     font-size: 35px;
     font-weight: 600;
@@ -97,10 +51,9 @@ height: 300px;
 
 .boardcard {
     font-family: 'Barlow', sans-serif;
-    border: 0px;
-    /* width: 290px; */
-      
+    border: 0px;      
 }
+
 .linkedicon{
     color: #0A66C2;
 }
@@ -125,7 +78,8 @@ font-weight: 600;
     }
     
     .whytxt {
-        font-size: 30px; /* Adjust as necessary */
+        font-size: 30px;
+        color: var(--color-testimonial); /* Adjust as necessary */
     }
     
 }
@@ -134,14 +88,20 @@ font-weight: 600;
 }
 @media (max-width:500px){
     .researchimg{
-        max-width: 250px;
+        max-width: 300px;
         max-height: 250px;
         margin: 10px;
     } 
     .about1img{
-        max-width: 250px;
+        max-width: 320px;
         max-height: 250px;
-    }  
+    } 
+    .ovtxt{
+        color: var(--subhead2-color);
+        font-size: 25px;
+        font-weight: 600;
+    }
+     
 }
 @media (min-width:501px) and (max-width:769px){
     .about1img{
@@ -158,18 +118,14 @@ font-weight: 600;
 }
   
 
+.textjust {
+    text-align: justify;
+    hyphens: auto;
+    word-wrap: break-word;
+    line-height: 1.5;
+    word-spacing: 0.02em;
+  }
+   
 
 
 
-.fpart{
-    background-image: url("../assets/Oviyabg.png");
-    background-size: 100% 100%;
-}
-
-
-@media (max-width:768px){
-    .fpart{
-        background-image: url("../assets/phonebg.png");
-        background-size: 100% 100%;
-    }   
-}

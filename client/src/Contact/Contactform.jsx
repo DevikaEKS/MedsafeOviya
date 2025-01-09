@@ -67,7 +67,7 @@ function Contactform() {
           phone_number: formData.phone_number.toString(), // Ensure it's a string
         };
 
-        const response = await axios.post('http://192.168.139:248:5000/api/submit-form', formDataToSend);
+        const response = await axios.post('http://192.168.252.196:5000/api/submit-form', formDataToSend);
         if (response.status === 200) {
           toast.success('Message sent successfully!');
           setFormData({

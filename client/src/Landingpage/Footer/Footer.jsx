@@ -33,8 +33,8 @@ United Kingdom</p>
               <Link to={"/"} className='text-decoration-none text-light'><p>Who we are</p></Link>
               <Link to={"/drug-safety-services"} className='text-decoration-none text-light'><p>Services</p></Link>
               <Link className='text-decoration-none text-light'><p>News</p></Link>
-              <Link className='text-decoration-none text-light'><p>Downloads</p></Link>
-              <Link  to={"/careers"} className='text-decoration-none text-light'><p>Careers</p></Link>
+              <Link to={"/downloads"} className='text-decoration-none text-light'><p>Downloads</p></Link>
+              <Link to={"/careers"} className='text-decoration-none text-light'><p>Careers</p></Link>
               <Link to={"/contact"} className='text-decoration-none text-light'><p>Contact</p></Link>
               <Link to={"/disclaimer-and-privacy-policy"} className='text-decoration-none text-light'><p>Disclaimer & Privacy Policy</p></Link>
               </div>

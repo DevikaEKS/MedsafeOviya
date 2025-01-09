@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState,useEffect, useRef } from 'react';
 import date from '../assets/Calendar.png';
 import "./Downloads.css";
 import DownloadForm from './DownloadForm';
@@ -6,6 +6,9 @@ import DownloadForm from './DownloadForm';
 
 const Downloads = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+   useEffect(() => {
+      window.scrollTo(0, 0); 
+    }, []);
   const contentRefs = useRef([]); // Use an array to reference each accordion content
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index); // Toggle the current accordion

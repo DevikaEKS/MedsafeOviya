@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './Banner.css';
-
+import moleculeim from "../assets/mol.png";
 // Import images
-
 import founderImage from "../assets/b1.png";
 import founder1Image from "../assets/b2.png";
 import founder2Image from "../assets/b3.png";
@@ -32,37 +31,64 @@ function Banner() {
 
   return (
     <div className='container-fluid bnpart w-100'>
-      <div className="container servicesbg pt-5 " id="ourservices">
-        <div className="row align-items-center">
+      
+      <div className="container servicesbg pt-0 pt-md-5 " id="ourservices">
+        <div className="row align-items-center pb-sm-5 pb-md-0">
           {/* Left side: Animated Text */}
-          <div className="col-sm-12 col-md-6 d-flex justify-content-center mb-4 mb-lg-0">
+          <div className="col-sm-6 col-md-6 d-flex justify-content-center mb-4 mb-lg-0">
             <motion.h4
-              className="saptext py-3 text-light"
-              key={currentText}  // Ensures transition reset with every change
-              initial={{ opacity: 0, y: 50 }}  // Start from bottom
-              animate={{ opacity: 1, y: 0 }}   // Move to normal position
-              exit={{ opacity: 0, y: -50 }}    // Exit upwards
-              transition={{ duration: 1 }}
-            >
+              className="saptext py-3 text-light ms-0 ms-lg-3"
+              key={currentText}  
+              initial={{ opacity: 0, y: 70 }}  
+              animate={{ opacity: 1, y: 0 }}   
+              exit={{ opacity: 0, y: -50 }}    
+              transition={{ duration: 1 }} >
               {texts[currentText]}
             </motion.h4>
           </div>
 
-          {/* Right side: Animated Image */}
-          <div className="col-sm-12 col-md-6 px-2 d-flex justify-content-end">
+          
+          <div className="col-sm-6 col-md-6 px-2 secondpart">
             <motion.img
-              src={images[currentText]}  // Change image based on currentText
+              src={images[currentText]}  
               alt={`Banner Image ${currentText + 1}`}
               className="img-fluid rounded text-light bimg"
-              key={currentText}  // Ensures transition reset with every change
-              initial={{ opacity: 0, y: 50 }}  // Start from bottom
-              animate={{ opacity: 1, y: 0 }}   // Move to normal position
-              exit={{ opacity: 0, y: -50 }}    // Exit upwards
-              transition={{ duration: 1 }}
-            />
+              key={currentText}  
+              initial={{ opacity: 0.4, y: 10 }} 
+              animate={{ opacity: 1, y: 0 }}   
+              exit={{ opacity: 0, y: -20 }}   
+              transition={{ duration: 1 }}/>
           </div>
         </div>
       </div>
+
+     
+      <motion.img
+        src={moleculeim}  
+        alt="Rotating Image Top Left"
+        className="rotating-img-left d-none d-lg-block"
+        animate={{
+          rotate: 360,  
+        }}
+        transition={{
+          repeat: Infinity,
+          repeatType: "loop",  
+          duration: 10,  
+        }}
+      />
+      <motion.img
+        src={moleculeim}  
+        alt="Rotating Image Top Right"
+        className="rotating-img-right d-none d-lg-block"
+        animate={{
+          rotate: -360,  
+        }}
+        transition={{
+          repeat: Infinity,
+          repeatType: "loop",  
+          duration: 10,  
+        }}
+      />
     </div>
   );
 }

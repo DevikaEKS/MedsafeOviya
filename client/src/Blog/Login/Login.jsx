@@ -90,7 +90,7 @@ function Login() {
       isValid = false;
     }                                                                                                                                                                                                                               
 
-    axios.post('http://192.168.139:248:5000/api/auth/login', {
+    axios.post('http://192.168.252.196:5000/api/auth/login', {
       email,
       password,
     }).then(response => {
@@ -100,7 +100,7 @@ function Login() {
           window.location.href='/addblog'
         }
         else if(response.data.user.id===2){
-          window.location.href='/addblogs'
+          window.location.href='/addblog'
         }
       }
     }).catch(error => {

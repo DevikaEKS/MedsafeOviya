@@ -117,13 +117,10 @@
 
 
 
-
-
-
 import React, { useEffect, useState } from "react";
 import "./Adminview.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
-
+import b1im from "../../assets/buildingbg.png";
 function Adminview() {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -138,7 +135,7 @@ function Adminview() {
       const mockBlogData = {
         id: 1,
         title: "Understanding React Context API",
-        blog_image: "/images/react-context.jpg",
+        blog_image: b1im,
         content: "<p>React Context API is a way to share state across the entire app...</p>",
         date:"12 Sep"
       };
@@ -194,7 +191,7 @@ function Adminview() {
                 <img
                   src={blog.blog_image.replace("\\", "/")}
                   alt={blog.title}
-                  className="imsp py-3 blogpartcontent"
+                  className="imsp py-3 blogpartcontent m-1"
                 />
               </div>
               <div

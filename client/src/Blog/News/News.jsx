@@ -64,13 +64,6 @@ function News() {
   {relatednews.date}
   </div>
 </div>
-
-
-
-
-
-
-
               </Link>
             ))}
           </div>
