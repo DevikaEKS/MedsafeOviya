@@ -1,4 +1,9 @@
-
+.iconwh{
+  padding: 10px;
+  background-color: #03d3bd;
+  border: 1px solid #0d868f;
+  border-radius: 50%;
+}
 .fixed-webinarpart {
     position: fixed;
     bottom: 20px;

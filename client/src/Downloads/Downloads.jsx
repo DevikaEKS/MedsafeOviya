@@ -19,9 +19,9 @@ const Downloads = () => {
           {/* Card 1 */}
           <div className="card custom-card mb-3">
             <div className="card-body d-flex flex-column">
-              <div className='d-flex align-items-center justify-content-between'>
+              <div className='w-100 d-flex align-items-center justify-content-between'>
                 {/* Title */}
-                <div>
+                <div className='width-heading'>
                   <h5 className="card-title card-title-size">
                     Oviya MedSafe – Convincing Leaders to Constitute Pharmacovigilance
                   </h5>
@@ -31,7 +31,7 @@ const Downloads = () => {
                   <button
                     className='custom-btn btn btn-primary'
                     onClick={() => toggleAccordion(0)} // Pass the index 0 for the first accordion
->
+                  >
                     Download PDF
                   </button>
                 </div>
@@ -71,9 +71,9 @@ const Downloads = () => {
           <div className="card custom-card mb-3">
             <div className="card-body d-flex flex-column">
               <div className='d-flex align-items-center justify-content-between'>
-                <div>
-                  <h5 className="card-title">
-                  Oviya MedSafe – Accomplishing Pharmacovigilance Equilibrium Since 2012
+                <div className='width-heading'>
+                  <h5 className="card-title text-left">
+                  Oviya MedSafe - Accomplishing Pharmacovigilance Equilibrium Since 2012
                   </h5>
                 </div>
                 <div>
@@ -118,9 +118,9 @@ const Downloads = () => {
           <div className="card custom-card mb-3">
             <div className="card-body d-flex flex-column">
               <div className='d-flex align-items-center justify-content-between'>
-                <div>
+                <div className='width-heading'>
                   <h5 className="card-title">
-                    Oviya MedSafe – Convincing Leaders to Constitute Pharmacovigilance
+                  Oviya MedSafe – Perfecting Professionalism in Pharmacovigilance
                   </h5>
                 </div>
                 <div>

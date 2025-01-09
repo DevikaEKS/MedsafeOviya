@@ -1,0 +1,31 @@
+.crdbdy{
+    background-color: #291571;
+    color: #fff !important;
+    text-align: justify;
+}
+.crmsolutions{
+    background-color: #cee6ff;
+    color: #291571;
+}
+
+@media (max-width:427px){
+    .procard{
+        width: 250px;
+    }
+}
+
+
+.swiper-button-next, .swiper-button-prev {
+     /* Adjust the arrow color */
+    font-size: 14px;  /* Adjust the arrow size */
+    z-index: 10;  /* Ensure they are above the Swiper */
+  }
+  
+  .swiper-button-prev {
+    left: 50px; /* Position left arrow */
+  }
+  
+  .swiper-button-next {
+    right: 50px; /* Position right arrow */
+  }
+

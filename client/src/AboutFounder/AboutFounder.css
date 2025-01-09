@@ -61,6 +61,9 @@ font-size: 24px;
 .researchimg{
     height: 400px;
 }
+.about1img{
+height: 300px;
+}
 .whytxt{
     font-size: 85px !important;
     font-weight: 800;
@@ -129,23 +132,44 @@ font-weight: 600;
 .about1img{
     height: 360px;
 }
-@media (max-width:400px){
+@media (max-width:500px){
     .researchimg{
         max-width: 250px;
         max-height: 250px;
         margin: 10px;
     } 
     .about1img{
-        max-width: 300px;
+        max-width: 250px;
         max-height: 250px;
     }  
 }
-@media (min-width:401px) and (max-width:769px){
-    .researchimg{
+@media (min-width:501px) and (max-width:769px){
+    .about1img{
         max-width: 300px;
         max-height: 300px;
+        margin: 10px;
+    }
+    .researchimg{
+        max-width: 290px;
+        max-height: 250px;
         margin: 10px;
     }
    
 }
   
+
+
+
+
+.fpart{
+    background-image: url("../assets/Oviyabg.png");
+    background-size: 100% 100%;
+}
+
+
+@media (max-width:768px){
+    .fpart{
+        background-image: url("../assets/phonebg.png");
+        background-size: 100% 100%;
+    }   
+}

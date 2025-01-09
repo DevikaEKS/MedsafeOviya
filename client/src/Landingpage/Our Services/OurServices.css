@@ -10,6 +10,9 @@
     background-color: #03d3bd;
     font-family: 'Heebo', sans-serif;
     min-height: 450px;
+    line-height: 1.6;
+    font-style: oblique !important;
+    
 }
 
 .arw{

@@ -1,0 +1,75 @@
+
+
+.serviceheading {
+    color: #fff; 
+    font-size: 65px !important;
+    font-weight: 700 !important;
+    position: relative;
+    margin-bottom: 30px;
+   
+}
+/* .serviceheading::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 35px;
+    height: 5px;
+    background: linear-gradient(90deg, #291571 0%, #4E28D7 100%);
+    border-radius: 2px 0 0 0;
+} */
+
+.saptext{
+    font-size: 54px;
+    background-image: linear-gradient(#fff, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 600;
+   font-family: 'DM Sans', sans-serif;
+}
+
+
+
+.servicesbg{
+    background-image: url("../../Asset/servicesbg.png");
+    height: 100vh;
+    background-repeat: no-repeat;
+}
+
+.bimg{
+    height: 500px;
+}
+@media (max-width:426px){
+    .serviceheading{
+        font-size: 48px !important;
+        padding-left: 0px;
+        text-align: center;
+       
+    }
+    .servetext{
+        font-size: 40px !important;
+    }
+ .saptext{
+        font-size: 30px;
+        text-align: center;
+
+    }
+    .prt{
+        font-size: 20px;
+    }  
+}
+
+
+
+
+.bnpart{
+    background-image: url('../assets/Bannerllaptop.png');
+}
+
+@media (max-width:770px){
+    .bimg{
+        height: 300px;
+    }
+   
+}

@@ -36,6 +36,8 @@ import Forgotpassword from './Forgotpassword/Forgotpassword';
 import News from './Blog/News/News';
 import DownloadForm from './Downloads/DownloadForm';
 import Downloads from './Downloads/Downloads';
+import SwiperCard3D from './Landingpage/Videopart/SwiperCard3D';
+import Banner from './Banner/Banner';
 
 function App() {
 
@@ -44,7 +46,7 @@ function App() {
     <>
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={ [<Contactpart/>,<Menubar/>,<Aboutpage/>,<Philosophy/>,<OurServices/>,<Testimonial/>,<Blogbanner/>,<Videopart/>,<Footer/>,<Whatsapp/>]}/>
+      <Route path="/" element={ [<Contactpart/>,<Menubar/>,<Banner/>,<Aboutpage/>,<Philosophy/>,<OurServices/>,<Testimonial/>,<Blogbanner/>,<Videopart/>,<Footer/>,<Whatsapp/>]}/>
       <Route path='/services' element={[<Contactpart />,<Menubar />,<Footer />,<Whatsapp/>]}/>
       <Route path='/tab' element={<Tablet/>}/>
       <Route path='/about-us' element={[<Contactpart/>,<Menubar/>,<AboutFounder/>,<Footer/>,<Whatsapp/>]}/>
@@ -55,15 +57,17 @@ function App() {
       <Route path='/drug-safety-services' element={[<Contactpart/>,<Menubar/>,<DrugSafety/>,<Footer/>,<Whatsapp/>]}/>
       <Route path='/pharmacovigilance-consulting' element={[<Contactpart/>,<Menubar/>,<Pharmacovigilance/>,<Footer/>,<Whatsapp/>]}/>
       <Route path='/strategic-partnerships' element={[<Contactpart/>,<Menubar/>,<Partnerships/>,<Footer/>,<Whatsapp/>]}/>
- <Route path='/careers' element={[<Contactpart/>,<Menubar/>,<Careers/>,<Careersdata/>,<Footer/>,<Whatsapp/>]} />
- <Route path="/updateblog" element={<Updateblog/>}/>
- <Route path='/addblog' element={<Addblog/>}/>
+      <Route path='/careers' element={[<Contactpart/>,<Menubar/>,<Careers/>,<Careersdata/>,<Footer/>,<Whatsapp/>]} />
+      <Route path="/updateblog" element={<Updateblog/>}/>
+     <Route path='/addblog' element={<Addblog/>}/>
  <Route path='/adminblog' element={<Adminblog/>}/>
- <Route path='/news' element={<Adminview/>}/>
+ <Route path='/news' element={[<Contactpart/>,<Menubar/>,<Adminview/>,<Footer/>,<Whatsapp/>]}/>
  <Route path="/disclaimer-and-privacy-policy" element={[<Contactpart/>,<Menubar/>,<Privact/>,<Footer/>,<Whatsapp/>]}/>
  <Route path='/forgot-password' element={<Forgotpassword/>}/>
- <Route path='/newsletter' element={<News/>}/>
+ <Route path='/newsletter' element={[<Contactpart/>,<Menubar/>,<News/>,<Footer/>,<Whatsapp/>]}/>
  <Route path="/downloads" element={[<Contactpart/>,<Menubar/>,<Downloads/>,<Footer/>,<Whatsapp/>]}/>
+ <Route path='/swi' element={<SwiperCard3D/>}/>
+ <Route path='/ba' element={<Banner/>}/>
     </Routes>
 
     </BrowserRouter>

@@ -13,7 +13,7 @@ function Whatsapp() {
   return (
     <div className='fixed-webinarpart'>  
   
-<p onClick={() => navigateToWhatsApp("8220763222")}><img src={whatsappicon} height={"40px"}/></p>
+<p onClick={() => navigateToWhatsApp("8220763222")} className='iconwh'><img src={whatsappicon} height={"40px"}/></p>
      
 
 

@@ -1,19 +1,17 @@
-.custom-link {
-  text-decoration: none; /* Removes the underline if any */
-  outline: none; /* Removes the focus outline */
+/* .custom-link {
+  text-decoration: none; 
+  outline: none; 
   font-weight: 500;
 }
 
 .navbarbg{
   background:linear-gradient(to right ,var(--navgradientfrom),var(--navgradientto));
   color: white;
-    position: sticky;
-    top: 0; /* Ensures it's pinned to the top */
-    z-index: 1020; /* Higher than most content layers */
-
+   
+    z-index: 1020; 
 }
 
-/* Assuming 'navtext' is for your navigation text */
+
 .navtext ,.navtext2{
   color: white !important;
   font-size: 16px;
@@ -21,10 +19,10 @@
 }
 
 .navtext:hover {
-  color: white !important; /* Set your desired hover color */
+  color: white !important;
 }
 
-/* If you want to override other hover effects like links changing color */
+
 .navtext a:hover {
   color: white !important;
 }
@@ -54,14 +52,14 @@ body, html {
 }
 
 .navbar-toggler {
-  border-color: transparent; /* Removes the border */
-  outline: none; /* Ensures no ring appears */
-  box-shadow: none; /* Removes the default focus ring shadow */
+  border-color: transparent; 
+  outline: none; 
+  box-shadow: none; 
 }
 
 .navbar-toggler:focus {
-  outline: none; /* Ensures no focus outline */
-  box-shadow: none; /* Removes any focus shadow */
+  outline: none; 
+  box-shadow: none; 
 }
 
 .navbar-toggler-icon {
@@ -74,9 +72,9 @@ body, html {
   bottom: 8px !important;
   left: 50%;
   transform: translateX(-50%);
-  width: 45%; /* Small width for the underline */
-  height: 2px; /* Thickness of the underline */
-  background-color: #fff; /* Color of the underline */
+  width: 45%; 
+  height: 2px; 
+  background-color: #fff; 
 }
 
 .navtext2 {
@@ -94,9 +92,9 @@ body, html {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 40%; /* Small width for the underline */
-  height: 2px; /* Thickness of the underline */
-  background-color: #fff; /* Color of the underline */
+  width: 40%; 
+  height: 2px; 
+  background-color: #fff; 
 }
 
 
@@ -113,11 +111,68 @@ body, html {
 @media (max-width: 768px) {
   .navtext:hover::after,
   .navtext2:hover::after {
-    content: none; /* Remove the underline effect */
+    content: none; 
   }
 
   .logosize{
     width: 200px;
     height: 60px;
   }
+} */
+
+
+
+.custom-link {
+  position: relative;
+  text-decoration: none;
+  font-size: 15px;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.custom-link:hover {
+  color: white;
+}
+
+.custom-link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+.custom-link:hover::after {
+  width: 50%;
+}
+
+.custom-link.active::after {
+  width: 50%;
+  height: 2px;
+  background-color: white;
+}
+
+.dropdown-item.active {
+  font-weight: 500;
+  background-color: #dbffd5;
+  color: black;
+}
+
+.dropdown-item:hover{
+  background-color: #dbffd5;
+}
+
+.custom-link2{
+  text-decoration: none;
+}
+
+@media (max-width: 769px) {
+  .logo-size{
+    
+  };
 }

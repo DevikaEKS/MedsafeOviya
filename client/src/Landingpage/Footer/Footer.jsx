@@ -40,9 +40,9 @@ United Kingdom</p>
               </div>
             <div className='col-sm-12 col-md-6 col-lg-3'>
               <h4 className='footerhead py-3'>Services</h4>
-              <p>Drug Safety Services</p>
-              <p>Pharmacovigilance Consulting</p>
-              <p>Strategic Partnerships</p>
+              <p><Link to="/drug-safety-services" className='text-decoration-none text-light'>Drug Safety Services</Link></p>
+              <p><Link to="/pharmacovigilance-consulting" className='text-decoration-none text-light'>Pharmacovigilance Consulting</Link></p>
+              <p><Link to="/strategic-partnerships" className='text-decoration-none text-light'>Strategic Partnerships</Link></p>
               </div>
             <div className='col-sm-12 col-md-6 col-lg-3'>
             <div className="d-flex flex-column">
@@ -57,9 +57,9 @@ United Kingdom</p>
  
               <div className='col-sm-12 d-block d-md-none'>
               <h4 className='footerhead py-3'>Contact</h4>
-             <p className='text-decoration-none'><a href="mailto:info@oviyamedsafe.com" className='text-light text-decoration-none'><img src={Phwhite} height={"20px"} className='pe-2'/>info@oviyamedsafe.com</a></p> 
-              <p className='text-decoration-none'><a href="tel:+91-422-3502276" className='text-light text-decoration-none'><img src={Mailwhite} height={"18px"} className='pe-2 mb-1'/>IND +91 422 3502276</a></p> 
-              <a href="tel:+44-20-3393-6037" className='text-light text-decoration-none'>UK +44 20 3393 6037</a>
+             <p className='text-decoration-none'><a href="mailto:info@oviyamedsafe.com" className='text-light text-decoration-none'><img src={Mailwhite} height={"18px"} className='pe-2 mb-1'/>info@oviyamedsafe.com</a></p> 
+              <p className='text-decoration-none'><a href="tel:+91-422-3502276" className='text-light text-decoration-none'><img src={Phwhite} height={"20px"} className='pe-2'/>IND +91 422 3502276</a></p> 
+              <p className='text-decoration-none'><a href="tel:+44-20-3393-6037" className='text-light text-decoration-none'><img src={Phwhite} height={"20px"} className='pe-2'/>UK +44 20 3393 6037</a></p>
               </div>
                <div className='d-flex social-links py-5'>
              <a href='https://www.facebook.com/OviyaMedSafe'><CiFacebook className='icon'/></a>
@@ -70,7 +70,7 @@ United Kingdom</p>
               </div>  
         </div>
         <div className='d-flex flex-column justify-content-center align-items-center'>
-        <p>Copyright © {years} Oviya MedSafe. All Rights Reserved.</p>
+        <p className='text-center'>Copyright © {years} Oviya MedSafe. All Rights Reserved.</p>
         <a href='https://www.kggeniuslabs.com/' className='text-decoration-none'><p className='text-light '>Designed and Developed by KG Genius Labs</p></a>
         </div>
     </div>
