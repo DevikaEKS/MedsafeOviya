@@ -2,6 +2,7 @@
 .philosophybg {
   background-image: url("../../assets/philoDesk.png");
   height:720px;
+  /* background-color: #fbfcfc; */
   background-size: cover; /* Ensures the image covers the container */
   background-position: top; /* Centers the image */
   background-repeat: no-repeat; /* Prevents repeating the image */

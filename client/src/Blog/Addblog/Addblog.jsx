@@ -16,7 +16,7 @@ function Addblog() {
   const [image, setImage] = useState(null);
   const [selectedDate,setSelectedDate]=useState("") 
   const navigate = useNavigate();
-  const { id } = useParams();
+
 
   const modules = {
     toolbar: [
@@ -29,68 +29,59 @@ function Addblog() {
     ],
   };
 
-  // useEffect(() => {
-  //   axios
-  //     .get("https://www.kggeniuslabs.com:5000/blog_categories")
-  //     .then((res) => {
-  //       setCategories(res.data); // Store categories in state
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching categories:", error);
-  //     });
-  // }, []);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const newsData = {
-      category,
-      title,
-      shortTitle,
-      content,
-      selectedDate,
-      image: image ? image.name : "No image uploaded", // Log the file name or indicate no image
-    };
   
-    // Log the data to the console
-    console.log("Blog Data Submitted:", newsData);
-    const formData = new FormData();
-    formData.append("categoryId", category);
-    formData.append("title", title);
-    formData.append("stitle", shortTitle);
-    formData.append("content", content);
-    if (image) {
-      formData.append("image", image);
+    if (!category || !title || !shortTitle ||!selectedDate || !image || !content) {
+      toast.error('All fields are required.');
+      return;
     }
-
-
-
-    // axios
-    //   .post("https://www.kggeniuslabs.com:5000/add-blog", formData, {
-    //     headers: {
-    //       "Content-Type": "multipart/form-data",
-    //     },
-    //   })
-      // .then((res) => {
-      //   console.log(res.data);
-      //   if (res.data.message === "Blog added successfully!") {
-      //     toast.success("Blog added successfully!"); // Show success message
-      //     navigate(`/blogeditor/${id}`);
-      //     // Clear all fields
-      //     setCategory("");
-      //     setTitle("");
-      //     setShortTitle("");
-      //     setImage(null);
-      //     setContent("");
-      //     setConclusion("");
-      //   } else {
-      //     toast.error("Try again later."); // Show error message
-      //   }
-      // })
-      // .catch((error) => {
-      //   console.error("Error submitting blog:", error);
-      //   toast.error("Error submitting blog."); // Show error message
-      // });
+  
+    const formData = new FormData();
+    formData.append('category_id', category)
+    formData.append('news_title', title);
+    formData.append('news_short_title', shortTitle);
+    formData.append('date', selectedDate);
+    formData.append('image', image);
+    formData.append('news_content', content);
+  
+    try {
+      const response = await fetch('http://localhost:5000/api/news', {
+        method: 'POST',
+        body: formData, 
+      });
+  
+      // Check if the response is JSON
+      const contentType = response.headers.get("content-type");
+      let data = null;
+  
+      if (contentType && contentType.includes("application/json")) {
+        data = await response.json();
+      } else {
+        const text = await response.text(); // Get raw response if not JSON
+        // setMessage(text); // Set raw message if needed
+        return;
+      }
+  
+      if (response.ok) {
+        // setMessage(data.message);
+        setTitle('');
+        setContent('');
+        setCategory('');
+        setShortTitle('');
+        setImage(null);
+        setSelectedDate('');
+        toast.success('News added successfully!');
+        navigate(`/adminview`);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('An error occurred. Please try again.');
+    }
   };
+
 
   return (
     <div className="container bgblogs">

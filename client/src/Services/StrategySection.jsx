@@ -22,7 +22,7 @@ const StrategySection = () => {
             }}
           >
             <div>
-              <img src={item?.image_id} alt="service" className="img-fluid" />
+              <img src={item?.image_id} title={item?.tit} alt={item?.alt} className="img-fluid" />
             </div>
             <p
               className="mt-3 text-center secondary-text"

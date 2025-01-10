@@ -3,6 +3,7 @@ import founder1 from "../assets/founder1.png";
 import founder2 from "../assets/founder2.png";
 import founder3 from "../assets/founder3.png";
 import "./AboutFounder.css";
+import { Helmet } from 'react-helmet';
 function BoardMembers() {
   const boardMembers = [{
     name: 'Dr J Vijay Venkatraman',
@@ -24,6 +25,12 @@ function BoardMembers() {
 
   return (
     <div className='container-fluid p-0 m-0 founderpart'>
+      <Helmet>
+                    <title>Oviya Medsafe Board of Directors | Experts in Healthcare and Data Security</title>
+                    <meta name="description" content="Meet the board of directors at Oviya Medsafe. Our team of experts brings years of experience in healthcare, data security, and innovation to guide our mission in improving healthcare safety." />
+                    <meta name="keywords" content="Oviya Medsafe Board, Healthcare Experts, Board of Directors, Medical Data Security, Healthcare Innovation, Data Security Leaders, Oviya Medsafe Leadership Team" />
+                    <link rel="canonical" href="https://www.oviyamedsafe.com/our-board" />
+                  </Helmet>
       <h1 className='text-center subhead2 pb-3 pt-4'>Our Board</h1>
       <div className='boardpart'>
         <div className='container'>
@@ -31,7 +38,8 @@ function BoardMembers() {
             {boardMembers.map((member, index) => (
               <div className='col-sm-12 col-md-4 my-1' key={index}>
                 <div className="card boardcard mx-1 mx-lg-5 border-0 h-100">
-                  <img src={member.img} alt={member.name} className="card-img-top" />
+                  <img src={member.img} title="Oviya MedSafe Leadership – Driving Excellence in Drug Safety & Compliance" alt="Board members of Oviya MedSafe, representing leadership in global drug safety and pharmacovigilance
+" className="card-img-top" />
                   <div className="card-body">
                     <h5 className="card-title boardcardtitle">{member.name}</h5>
                     <p className="card-text boardcardposition">{member.position}</p>

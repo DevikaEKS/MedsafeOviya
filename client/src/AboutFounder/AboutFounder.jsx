@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import research from '../assets/research.png';
 import './AboutFounder.css';
 import about1 from "../assets/ab2.png";
 function AboutFounder() {
+  useEffect(()=>{
+    window.scroll(0,0);
+  },[])
   return (
     <div className='container-fluid abtparts'>
         <div className='row mx-1 mx-md-3 mx-lg-5 py-4'>
@@ -33,7 +36,3 @@ function AboutFounder() {
 }
 
 export default AboutFounder
-
-
-
-

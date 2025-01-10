@@ -1,218 +1,151 @@
-
-
-// import React, { useEffect, useState } from "react";
-// import "./Adminview.css";
-// import { Link, useNavigate, useParams } from "react-router-dom";
-
-// // import axios from "axios";
-
-// function Adminview() {
-//   const navigate = useNavigate();
-
-//   const { id } = useParams();
-//   // const decodedId = atob(id);
-//   const [blog, setBlog] = useState(null);
-//   const [relatedBlogs, setRelatedBlogs] = useState([]);
-//   const [categoryId, setCategoryId] = useState();
-
-// //   useEffect(() => {
-// //     axios
-// //       .get(`https://www.kggeniuslabs.com:5000/blog/${id}`)
-// //       .then((res) => {
-// //         setBlog(res.data);
-// //         setCategoryId(res.data.category_id);
-// //       })
-// //       .catch((error) => {
-// //         console.error("Error fetching blog data:", error);
-// //       });
-// //   }, [id]);
-
-// //   useEffect(() => {
-// //     // Fetch related blogs based on category_id and exclude the current blog
-// //     if (categoryId) {
-// //       axios
-// //         .get(`https://www.kggeniuslabs.com:5000/relatedBlogs/${categoryId}/${id}`)
-// //         .then((res) => {
-// //           console.log(res.data);
-// //           setRelatedBlogs(res.data);
-// //         })
-// //         .catch((error) => {
-// //           console.error("Error fetching related blogs:", error);
-// //         });
-// //     }
-// //   }, [categoryId, id]);
-
-
-//   const handleClick = () => {
-//     navigate("/sap-blog1");
-//   };
-//   return (
-//     <div className="container-fluid blogpartcontent p-0 m-0">
-//       <div className="row my-3 mx-3">
-//         <div className="col-sm-12 col-lg-7">
-//           {blog ? (
-//             <>
-//               <h4 className="py-3">
-//                 <b>{blog.title}</b>
-//               </h4>
-//               <div className="d-flex justify-content-center">
-//                 <img
-//                   src={blog.blog_image.replace("\\", "/")}
-//                   alt={blog.title}
-//                   className="imsp py-3 blogpartcontent"
-//                 />
-//               </div>
-//               <div
-//                 dangerouslySetInnerHTML={{ __html: blog.content }}
-//                 style={{ color: "#291750" }}
-//               />
-//               <h5 className="fw-bold">Conclusion</h5>
-//               <p>{blog.conclusion}</p>
-//             </>
-//           ) : (
-//             <p>Loading...</p>
-//           )}
-//         </div>
-//         <div className="col-sm-0 col-lg-1"></div>
-//         <div className="col-sm-12 col-lg-4">
-//           <div className="latestupdate">
-//             <h2 className="my-4">
-//               <b>Latest Updates</b>
-//             </h2>
-//             {relatedBlogs.map((relatedBlog) => (
-//               <Link
-//                 to={`/sap-blog/${relatedBlog.unique_identifier}`}
-//                 key={relatedBlog.id}
-//                 style={{ textDecoration: "none" }}
-//               >
-//                 <div className="card shadowcard my-2">
-//                   <img
-//                     src={relatedBlog.blog_image.replace("\\", "/")}
-//                     alt={relatedBlog.title}
-//                     className="card-img-top"
-//                   />
-//                   <div className="card-body">
-//                     <h5 className="card-title">
-//                       <b>{relatedBlog.title}</b>
-//                     </h5>
-//                     <p className="card-text">
-//                       {relatedBlog.content
-//                         .replace(/<[^>]+>/g, "")
-//                         .substring(0, 100)}
-//                       ...
-//                     </p>
-//                   </div>
-//                 </div>
-//               </Link>
-//             ))}
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Adminview;
-
-
-
-
 import React, { useEffect, useState } from "react";
 import "./Adminview.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import b1im from "../../assets/buildingbg.png";
+import { LuCircleUserRound } from "react-icons/lu";
+import { LiaCalendar } from "react-icons/lia";
 function Adminview() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
   const [relatedBlogs, setRelatedBlogs] = useState([]);
-  const [categoryId, setCategoryId] = useState();
+const[email,setEmail]=useState("");
 
+// GET LOGIC
   useEffect(() => {
-    // Simulate fetching blog data
-    const fetchBlogData = () => {
-      // Mocked response
-      const mockBlogData = {
-        id: 1,
-        title: "Understanding React Context API",
-        blog_image: b1im,
-        content: "<p>React Context API is a way to share state across the entire app...</p>",
-        date:"12 Sep"
-      };
-      setBlog(mockBlogData);
-      setCategoryId(mockBlogData.id); // You can replace this with actual category ID if needed
+
+    window.scroll(0,0)
+    // Fetch all news from the backend
+    const fetchBlog = async () => {
+      try {
+        const response = await fetch(`http://192.168.253.110:5000/api/news/${id}`);
+        if (response.ok) {
+          const data = await response.json();
+          setBlog(data);
+        } else {
+          setError('Failed to fetch courses');
+        }
+      } catch (error) {
+        setError('An error occurred while fetching courses');
+      }
     };
 
-    fetchBlogData();
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch("http://192.168.253.110:5000/api/news");
+        if (response.ok) {
+          const data = await response.json();
+          // Sort blogs by date in descending order and slice to get max 3 items
+          const sortedBlogs = data
+            .sort((a, b) => new Date(b.date) - new Date(a.date))
+            .slice(0, 3);
+            setRelatedBlogs(sortedBlogs);
+        } else {
+          console.error("Failed to fetch blogs");
+        }
+      } catch (error) {
+        console.error("An error occurred while fetching blogs:", error);
+      }
+    };
+    fetchBlog();
+    fetchCourses();
+  
   }, [id]);
 
-  useEffect(() => {
-    // Fetch related blogs based on category_id and exclude the current blog
-    if (categoryId) {
-      // Simulating related blogs data
-      const mockRelatedBlogsData = [
-        {
-          id: 2,
-          unique_identifier: "blog-2",
-          title: "Oviya MedSafe – Convincing Leaders to Constitute Pharmacovigilance",
-          blog_image: "/images/redux-react.jpg",
-          content: "<p>Redux is a predictable state container for JavaScript apps...</p>",
-          date:"Sep 2024"
-        },
-        {
-          id: 3,
-          unique_identifier: "blog-3",
-          title: "Oviya MedSafe – Convincing Leaders to Constitute Pharmacovigilance",
-          blog_image: "/images/react-hooks.jpg",
-          content: "<p>React Hooks allow you to use state and other React features...</p>",
-          date:"Jan 2025"
-        },
-       
-      ];
-      setRelatedBlogs(mockRelatedBlogsData);
+  const handleSubscribe = async () => {
+    if (!email) {
+      toast.error("Please enter an email address.");
+      return;
     }
-  }, [categoryId]);
 
-  const handleClick = () => {
-    navigate("/sap-blog1");
+    try {
+      const response = await fetch("http://192.168.253.110:5000/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success(data.message); // Display success message
+        setEmail(""); // Clear the email input
+      } else {
+        toast.error(data.message || "Subscription failed."); // Display error message
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again later."); // Handle fetch errors
+    }
   };
 
   return (
-    <div className="container blogpartcontent p-0 m-0">
-        <h1 className="newshead">News</h1>
+    <div className="container-fluid blogpartcontent px-0 px-md-5">
+        <h1 className="newshead py-3">News</h1>
       <div className="row my-3 mx-3">
-        <div className="col-sm-12 col-lg-7 shcard">
+        <div className="col-sm-12 col-lg-8 shcard">
           {blog ? (
             <>
-              <h4 className="py-3 text-dark blogmainhead" >
-               {blog.title}
-              </h4>
               <div className="d-flex justify-content-center">
                 <img
-                  src={blog.blog_image.replace("\\", "/")}
+                  src={`http://192.168.253.110:5000/uploads/${blog.image}`}
                   alt={blog.title}
-                  className="imsp py-3 blogpartcontent m-1"
+                  className="imsp p-0 blogpartcontent m-0"
                 />
               </div>
+              <div className="card-body">
+              <div className="d-flex px-2 align-items-center readbtn">
+                                  <p>
+                                    <LuCircleUserRound
+                                      style={{
+                                        fontSize: "22px",
+                                        verticalAlign: "middle",
+                                        color: "#64B556",
+                                      }}
+                                    />{" "}
+                                    by Admin /
+                                  </p>
+                                    <p className="d-flex gap-1 align-items-center" style={{paddingLeft: "10px"}}>
+                                      <LiaCalendar
+                                        style={{
+                                          fontSize: "22px",
+                                          verticalAlign: "middle",
+                                          color: "#64B556",
+                                        }}
+                                      />
+                                      {new Date(blog.date).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+                                    </p>
+                                </div>
+              <h4 className="py-3 text-dark blogmainhead" >
+               {blog.news_title}
+              </h4>
               <div
-                dangerouslySetInnerHTML={{ __html: blog.content }}
+                dangerouslySetInnerHTML={{ __html: blog.news_content }}
                 style={{ color: "#291750" }}
               />
-             
+                </div>
             </>
           ) : (
             <p>Loading...</p>
           )}
         </div>
-        <div className="col-sm-0 col-lg-1"></div>
+     
+      
         <div className="col-sm-12 col-lg-4">
         <div className="d-flex flex-column">
   <h2 className="py-3 latestnewshead">Subscribe Here to Get More Updates!</h2>
   <input
     type="email"
     className="email-input py-3 border-0 emailbrd"
-    placeholder="Email Address"/>
-  <button className="border-0 subscribebtn1 py-3 mt-2">SUBSCRIBE</button>
+    placeholder="Email Address"
+    value={email}
+    onChange={(e) => setEmail(e.target.value)} // Update state with email input
+    />
+  <button className="border-0 subscribebtn1 py-3 mt-2"
+    onClick={handleSubscribe} // Trigger subscription logic
+  >SUBSCRIBE</button>
 </div>
           <div className="latestupdate">
             <h2 className="my-4 latestnewshead">
@@ -220,33 +153,28 @@ function Adminview() {
             </h2>
             {relatedBlogs.map((relatedBlog) => (
               <Link
-                to={`/sap-blog/${relatedBlog.unique_identifier}`}
+                to={`/news/${relatedBlog.id}`}
                 key={relatedBlog.id}
                 style={{ textDecoration: "none" }}
               >
                
 
-<div className="card shadowcard my-2 p-3" style={{ position: 'relative' }}>
-    
-  <div className="card-body">
-    <h5 className="card-title blogsubtitle mt-4">
-      {relatedBlog.title}
-    </h5>
-    {/* Add more content for the card here */}
-  </div>
-
-  {/* Rectangular Box in the Top Right Corner */}
-  <div className="rectangular-box text-center">
-  {relatedBlog.date}
-  </div>
-</div>
-
-
-
-
-
-
-
+              <div className="card shadowcard my-2 p-2" style={{ position: 'relative' }}>
+                  <div className="row">
+                  <div className="col-9">
+                  <h5 className="card-title blogsubtitle my-3">
+                    {relatedBlog.news_title}
+                  </h5>
+                    </div> 
+                  <div className="col-3">
+                  <div className="rectangular-box text-center">
+                {/* {relatedBlog.date} */}
+                {new Date(relatedBlog.date).toLocaleString('default', { month: 'short', year: 'numeric' })}
+                </div>
+                  </div>
+                  </div>
+                
+              </div>
               </Link>
             ))}
           </div>

@@ -11,7 +11,7 @@ function Contactform() {
     email: '',
     phone_number: '', // Ensure the field name matches the backend
     message: '',
-    form_type: 1, // Add form_type field (set default to 1, Contact form)
+    form_id: 1, // Add form_type field (set default to 1, Contact form)
   });
 
   const [errors, setErrors] = useState({});
@@ -67,7 +67,7 @@ function Contactform() {
           phone_number: formData.phone_number.toString(), // Ensure it's a string
         };
 
-        const response = await axios.post('http://192.168.252.196:5000/api/submit-form', formDataToSend);
+        const response = await axios.post('http://localhost:5000/api/submit-form', formDataToSend);
         if (response.status === 200) {
           toast.success('Message sent successfully!');
           setFormData({
@@ -77,7 +77,7 @@ function Contactform() {
             email: '',
             phone_number: '', // Reset phone_number
             message: '',
-            form_type: 1, // Reset form_type
+            form_id: 1, // Reset form_type
           });
         }
       } catch (error) {

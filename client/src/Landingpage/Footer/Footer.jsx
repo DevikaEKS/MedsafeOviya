@@ -1,14 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faInstagram, faLinkedin, faSquareXTwitter,  faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { CiFacebook,CiLinkedin } from "react-icons/ci";
 import { FaXTwitter } from "react-icons/fa6";
 import { AiOutlineYoutube } from "react-icons/ai";
 import Phwhite from "../../assets/phonewhite.png";
 import Mailwhite from "../../assets/Mailwhite.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import "./Footer.css"
 function Footer() {
+
+  const [email, setEmail] = useState("");
+  // const [message, setMessage] = useState("");
+
+  const handleSubscribe = async () => {
+    if (!email) {
+      toast.error("Please enter an email address.");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://192.168.253.110:5000/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success(data.message); // Display success message
+        setEmail(""); // Clear the email input
+      } else {
+        toast.error(data.message || "Subscription failed."); // Display error message
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again later."); // Handle fetch errors
+    }
+  };
+
   const now=new Date();
 const years=now.getFullYear()
   return (
@@ -19,22 +52,22 @@ const years=now.getFullYear()
               <h4 className='footerhead py-3'>Location</h4>
               <h5 className='oviyafooter'>Oviya MedSafe Pvt Ltd</h5>
               <p className='pe-4'>2nd Floor, KTVR Gardens
-220a-3, Marudha Konar Road Velandipalayam
-Coimbatore – 641 025</p>
-<h5 className='oviyafooter'>Oviya MedSafe UK Ltd</h5>
-<p>Suite LP25393
-20-22, Wenlock Road
-London, N1 7GU
-United Kingdom</p>
+                220a-3, Marudha Konar Road Velandipalayam
+                Coimbatore – 641 025</p>
+                <h5 className='oviyafooter'>Oviya MedSafe UK Ltd</h5>
+                <p>Suite LP25393
+                20-22, Wenlock Road
+                London, N1 7GU
+                United Kingdom</p>
               </div>
             <div className='col-sm-12 col-md-6 col-lg-2'>
               <h5 className='footerhead py-3'>Explore</h5>
               <Link to={"/"} className='text-decoration-none text-light'><p>Home</p></Link>
-              <Link to={"/"} className='text-decoration-none text-light'><p>Who we are</p></Link>
+              <Link to={"/about-us"} className='text-decoration-none text-light'><p>Who we are</p></Link>
               <Link to={"/drug-safety-services"} className='text-decoration-none text-light'><p>Services</p></Link>
-              <Link className='text-decoration-none text-light'><p>News</p></Link>
-              <Link to={"/downloads"} className='text-decoration-none text-light'><p>Downloads</p></Link>
-              <Link to={"/careers"} className='text-decoration-none text-light'><p>Careers</p></Link>
+              <Link to={"/news"} className='text-decoration-none text-light'><p>News</p></Link>
+              <Link to={"/downloads"}className='text-decoration-none text-light'><p>Downloads</p></Link>
+              <Link  to={"/careers"} className='text-decoration-none text-light'><p>Careers</p></Link>
               <Link to={"/contact"} className='text-decoration-none text-light'><p>Contact</p></Link>
               <Link to={"/disclaimer-and-privacy-policy"} className='text-decoration-none text-light'><p>Disclaimer & Privacy Policy</p></Link>
               </div>
@@ -45,15 +78,20 @@ United Kingdom</p>
               <p><Link to="/strategic-partnerships" className='text-decoration-none text-light'>Strategic Partnerships</Link></p>
               </div>
             <div className='col-sm-12 col-md-6 col-lg-3'>
+            {/* Update the email to database */}
             <div className="d-flex flex-column">
-  <h4 className="footerhead py-3">Subscribe Here</h4>
-  <input
-    type="email"
-    className="email-input py-3 border-0"
-    placeholder="Email Address"
-  />
-  <button className="border-0 subscribebtn py-3 mt-2">SUBSCRIBE</button>
-</div>
+              <h4 className="footerhead py-3">Subscribe Here</h4>
+              <input
+                type="email"
+                className="email-input py-3 border-0"
+                placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)} // Update state with email input
+              />
+              <button className="border-0 subscribebtn py-3 mt-2"
+                   onClick={handleSubscribe} // Trigger subscription logic
+              >SUBSCRIBE</button>
+            </div>
  
               <div className='col-sm-12 d-block d-md-none'>
               <h4 className='footerhead py-3'>Contact</h4>
@@ -74,6 +112,7 @@ United Kingdom</p>
         <a href='https://www.kggeniuslabs.com/' className='text-decoration-none'><p className='text-light '>Designed and Developed by KG Genius Labs</p></a>
         </div>
     </div>
+    <ToastContainer />
     </div>
 
   )

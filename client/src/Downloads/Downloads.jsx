@@ -1,21 +1,29 @@
-import React, { useState,useEffect, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import date from '../assets/Calendar.png';
 import "./Downloads.css";
 import DownloadForm from './DownloadForm';
-
+import { Helmet } from 'react-helmet';
 
 const Downloads = () => {
   const [activeIndex, setActiveIndex] = useState(null);
-   useEffect(() => {
-      window.scrollTo(0, 0); 
-    }, []);
   const contentRefs = useRef([]); // Use an array to reference each accordion content
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index); // Toggle the current accordion
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
+
   return (
     <div className='container-fluid text-justify text-light'>
+      <Helmet>
+        <title>Pharmacovigilance Resources | Download Oviya MedSafe’s Expert Insights
+        </title>
+        <meta name="description" content="Access a variety of pharmacovigilance resources and publications by Oviya MedSafe, offering insights into drug safety practices and regulatory compliance." />
+        <meta name="keywords" content="downloads, Oviya MedSafe resources, pharmacovigilance publications, drug safety insights, regulatory compliance materials" />
+        <link rel="canonical" href="https://www.oviyamedsafe.com/downloads" />
+      </Helmet>
       <div className='col mx-1 mx-md-5'>
         <h1 className='subhead2 py-4'>Downloads</h1>
         <div className='d-flex flex-column card-margin'>

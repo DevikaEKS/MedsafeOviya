@@ -1,89 +1,3 @@
-// import React from "react";
-// import "./OurServices.css";
-// import serv1 from "../../assets/serv1.png";
-// import serv2 from "../../assets/serv1.png";
-// import serv3 from "../../assets/serv1.png";
-// import { MdOutlineArrowOutward } from "react-icons/md";
-// import { Link } from "react-router-dom";
-// function OurServices() {
-//   return (
-//     <div className="container">
-//       <div className="row py-3">
-//         <h1 className="subhead2">Our Services</h1>
-//         {/* First Card */}
-//         <div className="col-sm-12 col-md-4">
-//             <Link to="/drug-safety-services" className="text-decoration-none">
-//           <div className="card servicecard shadow-lg">
-//             <img
-//               src={serv1}
-//               className="card-img-top p-4"
-//               alt="Service Image"
-//               style={{ borderRadius: "8px" }}
-//             />
-//             <div className="card-body text-center">
-//               <h3 className="card-title blogbannerhead text-uppercase">
-//                 DRUG SAFETY <br /> SERVICES
-//               </h3>
-//             </div>
-//             <div className="circle-container">
-//             <MdOutlineArrowOutward className="mb-2 me-2 text-light"/>
-//             </div>
-//           </div>
-//           </Link>
-//         </div>
-
-//         {/* Second Card */}
-//         <div className="col-sm-12 col-md-4">
-//             <Link to="/pharmacovigilance-consulting" className="text-decoration-none">
-//           <div className="card servicecard shadow-lg">
-//             <img
-//               src={serv2}
-//               className="card-img-top p-4"
-//               alt="Service Image"
-//               style={{ borderRadius: "8px" }}
-//             />
-//             <div className="card-body text-center">
-//               <h3 className="card-title blogbannerhead text-uppercase">
-//                 PHARMACOVIGILANCE <br /> CONSULTING
-//               </h3>
-//             </div>
-//             <div className="circle-container">
-//             <MdOutlineArrowOutward className="mb-2 me-2 text-light"/>
-//             </div>
-//           </div>
-//           </Link>
-//         </div>
-
-//         {/* Third Card */}
-//         <div className="col-sm-12 col-md-4 border-0">
-//             <Link to="/strategic-partnerships" smooth={true} offset={-50}
-//             duration={500} // Duration for smooth scroll
-//             className="text-decoration-none">
-//           <div className="card servicecard shadow-lg">
-//             <img
-//               src={serv3}
-//               className="card-img-top p-4"
-//               alt="Service Image"
-//               style={{ borderRadius: "8px" }}
-//             />
-//             <div className="card-body text-center">
-//               <h3 className="card-title blogbannerhead text-uppercase">
-//                 STRATEGIC <br /> PARTNERSHIPS
-//               </h3>
-//             </div>
-//             <div className="circle-container">
-//             <MdOutlineArrowOutward className="mb-2 me-2 text-light"/>
-//             </div>
-//           </div>
-//           </Link>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default OurServices;
-
 
 
 
@@ -141,7 +55,7 @@ function OurServices() {
           <div className="col-sm-12 col-md-6 col-lg-4 my-3" key={card.id}>
             <Link to={card.link} className="text-decoration-none">
               <div
-                className="card servicecard "
+                className="card servicecard h-100"
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
               >
@@ -154,6 +68,7 @@ function OurServices() {
                     <img
                       src={card.image}
                       className="card-img-top p-4"
+                      title="Explore Pharmacovigilance Consultancy with Oviya MedSafe,Comprehensive Drug Safety Solutions,Building strong alliances in the pharmaceutical industry through expertise and trust."
                       alt="Service Image"
                       style={{ borderRadius: "8px" }}
                     />

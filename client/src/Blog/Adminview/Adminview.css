@@ -1,9 +1,9 @@
-.imsp{
+/* .imsp{
     max-width:600px
   }
  
  
- 
+  */
   
   .shadowcard{
       box-shadow: 1px 1px 10px 2px #d8d6df;
@@ -20,14 +20,14 @@ background-color: var(--subhead2-color);
 color: #fff;
   }
 .blogsubtitle{
-font-size: 12px;
+font-size: 14px;
 color: var(--subhead2-color);
 }
   
   .emailbrd{
     border: 1px solid var(--subhead2-color) !important;
   }
-  @media(max-width:426px){
+  /* @media(max-width:426px){
       .imsp{
           max-width: 300px !important;
       }
@@ -36,7 +36,7 @@ color: var(--subhead2-color);
       .imsp{
           max-width: 400px !important;
       }   
-  }
+  } */
 
 
 
@@ -72,3 +72,11 @@ color: var(--subhead2-color);
     font-size: 24px;
     
  }
+
+
+
+ .blogpartcontent {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}

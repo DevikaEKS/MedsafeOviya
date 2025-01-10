@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Contactform from './Contactform';
 import './Contact.css';
 import { IoMdMail } from 'react-icons/io';
@@ -6,9 +6,20 @@ import uklogo from "../assets/uk.png";
 import indlogo from "../assets/india.png";
 import { FaLocationDot } from "react-icons/fa6";
 import { HiPhone } from "react-icons/hi2";
+import { Helmet } from 'react-helmet';
 function Contact() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
   return (
     <div className="container-fluid m-0 contactpart contactfoot">
+      <Helmet>
+        <title>Contact Oviya MedSafe | Get in Touch for Pharmacovigilance Services</title>
+        <meta name="description" content="Reach out to Oviya MedSafe for expert pharmacovigilance consulting and drug safety services. Contact us to discuss your specific needs and how we can assist." />
+        <meta name="keywords" content="contact Oviya MedSafe, get in touch, pharmacovigilance services, drug safety consulting, contact information" />
+        <link rel="canonical" href="https://www.oviyamedsafe.com/contact" />
+      </Helmet>
         <div className='container'>
       <h1 className="text-center text-light subhead2 pt-3">Contact Us</h1>
       <p className="text-center text-light contactpara">Reach out and let's explore collaboration possibilities!</p>

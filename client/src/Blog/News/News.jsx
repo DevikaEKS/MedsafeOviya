@@ -48,22 +48,20 @@ function News() {
                 key={relatednews.id}
                 style={{ textDecoration: "none" }}
               >
-               
+                  <div className="card shadowcard my-2 p-3" style={{ position: 'relative' }}>
+                      
+                    <div className="card-body">
+                      <h5 className="card-title blogsubtitle mt-4">
+                        {relatednews.title}
+                      </h5>
+                      {/* Add more content for the card here */}
+                    </div>
 
-<div className="card shadowcard my-2 p-3" style={{ position: 'relative' }}>
-    
-  <div className="card-body">
-    <h5 className="card-title blogsubtitle mt-4">
-      {relatednews.title}
-    </h5>
-    {/* Add more content for the card here */}
-  </div>
-
-  {/* Rectangular Box in the Top Right Corner */}
-  <div className="rectangular-box text-center">
-  {relatednews.date}
-  </div>
-</div>
+                    {/* Rectangular Box in the Top Right Corner */}
+                    <div className="rectangular-box text-center">
+                    {relatednews.date}
+                    </div>
+                  </div>
               </Link>
             ))}
           </div>

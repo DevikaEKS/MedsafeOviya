@@ -1,6 +1,6 @@
 .blogbannerhead{
     font-size: 18px !important;
-    font-family: 'Heebo', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     font-weight: 800 !important;
 }
 
@@ -8,6 +8,7 @@
 
 .card-hover-content{
     background-color: #03d3bd;
+    height: 100%;
     font-family: 'Heebo', sans-serif;
     min-height: 450px;
     line-height: 1.6;

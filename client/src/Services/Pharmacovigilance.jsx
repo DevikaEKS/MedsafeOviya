@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import DynamicServices from './DynamicServices'
 import AccordianSection from './AccordianSection'
+import { Helmet } from 'react-helmet';
 
 const Pharmacovigilance = () => {
     useEffect(() => {
@@ -8,6 +9,12 @@ const Pharmacovigilance = () => {
     }, []);
   return (
     <div>
+      <Helmet>
+        <title>Pharmacovigilance Consulting | Proactive Drug Safety & Compliance Strategies</title>
+        <meta name="description" content="Oviya MedSafe’s pharmacovigilance consulting services help pharmaceutical companies navigate regulatory complexities while ensuring patient safety and global compliance" />
+        <meta name="keywords" content="pharmacovigilance consulting, Oviya MedSafe, regulatory compliance, drug safety outcomes, pharmaceutical consulting services" />
+        <link rel="canonical" href="https://www.oviyamedsafe.com/pharmacovigilance-consulting" />
+      </Helmet>
         <DynamicServices index = {1} />
         <AccordianSection index = {1} />
     </div>

@@ -1,57 +1,9 @@
-// import React from 'react';
-// import "./Login.css";
-// import axios from 'axios';
-// function Login() {
-//   axios.post("http://localhost:5000/api/auth/login")
-//   return (
-   
-//     <div
-//       className="d-flex justify-content-center align-items-center loginpage"
-//       style={{ height: '100vh', backgroundColor: '#f8f9fa' }}
-//     >
-//       <div className="card p-5 formbg rounded-5 border-0" style={{ width: '400px', borderRadius: '10px' }}>
-//         <h3 className="text-center text-light logintext">Login</h3>
-//         <h1 className="text-center mb-4 loginhead py-2" style={{ fontSize: '1.5rem' }}>
-//           Welcome to Oviya Medsafe
-//         </h1>
-//         <form>
-//           <div className="mb-3">
-//             <label className="form-label text-light">Email Id</label>
-//             <input
-//               type="email"
-//               className="form-control"
-//               placeholder="Enter Email Id"
-//               required/>
-//           </div>
-//           <div className="mb-3">
-//             <label className="form-label text-light">Password</label>
-//             <input
-//               type="password"
-//               className="form-control"
-//               placeholder="Enter Password"
-//               required/>
-//           </div>
-//           <div className="text-center">
-//   <input
-//     type="button"
-//     className="btn bloglogin mt-2"
-//     value="Login"
-//   />
-// </div>
-
-//         </form>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default Login;
-
-
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Login.css";
 function Login() {
   const [email, setEmail] = useState("");
@@ -88,53 +40,35 @@ function Login() {
     } else if (password.length < 8) {
       setPasswordError("Password must contain at least 8 characters");
       isValid = false;
-    }                                                                                                                                                                                                                               
+    }    
+    if (!isValid) {
+      toast.error("Please fix the errors before submitting!");
+      return;
+    }                                                                                                                                                                                                                           
 
-    axios.post('http://192.168.252.196:5000/api/auth/login', {
+    axios.post('http://localhost:5000/api/auth/login', {
       email,
       password,
     }).then(response => {
       if(response.data.message==="Login successful"){
         if(response.data.user.id===1){
 
-          window.location.href='/addblog'
+          window.location.href='/adminview'
         }
         else if(response.data.user.id===2){
-          window.location.href='/addblog'
+          window.location.href='/adminview'
         }
+        toast.success("Login successful");
       }
     }).catch(error => {
       if (error.response) {
-        console.error('Login failed:', error.response.data);
+       toast.error("Login Failed")
+        // console.error('Login failed:', error.response.data);
       } else {
-        console.error('Error:', error.message);
+        toast.error("Login Failed")
+        // console.error('Error:', error.message);
       }
     });
-    
-
-    // if (isValid) {
-    //   axios
-    //     .post("http://192.168.252.163:5000/api/auth/login", { email, password })
-    //     .then((response) => {
-    //       if (response.data.message === "Login successful") {
-    //         const userId = response.data.user.id; // Adjust according to API response
-    //         navigate(`/careers`);
-    //       } else if (response.data.message === "Invalid email or password") {
-    //         setLoginError("Invalid email or password");
-    //       } else if (
-    //         response.data.message === "Please provide both email and password."
-    //       ) {
-    //         setLoginError("Please provide both email and password.");
-    //       }
-    //     })
-    //     .catch((error) => {
-    //       if (error.response && error.response.status === 401) {
-    //         setLoginError("Invalid email or password");
-    //       } else {
-    //         setLoginError("An error occurred. Please try again later.");
-    //       }
-    //     });
-    // }
   };
 
   return (
@@ -184,7 +118,9 @@ function Login() {
           </button>
         </form>
       </div>
+      <ToastContainer />
     </div>
+    
   );
 }
 

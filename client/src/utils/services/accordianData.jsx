@@ -12,11 +12,13 @@ export const accordianData = [
                 id: 1,
                 title: "Lifecycle Management of ICSRs - From Triaging to Submission",
                 content: "A Marketing Authorisation Holder has to ensure that any safety relevant information is evaluated properly, adequately and reported subsequently as an ICSR or SUSAR (Suspected Unexpected Serious Adverse Reaction). Complying with global regulatory requirements to fulfil this obligation remains the challenge. At Oviya MedSafe, our team consisting of physicians, scientists, pharmacists and medical data managers offer you our integrated solution for case management which comprises collection of safety relevant data by literature search, assessment of suspected ADRs from the literature, competent authorities and spontaneous reporting systems, followed by electronic reporting.",
+                
             },
             {
                 id: 2,
                 title: "Aggregate Report Writing & Review (including but not limited to PSUR, PBRER, COD, PADER & DSUR)",
                 content: "The recent past has seen Pharmacovigilance regulations becoming more stringent, placing various regulatory obligations on the Marketing Authorisation Holders. One of such stern obligations presses for more importance to be given to aggregate reports as these best help define the benefit-risk balance of medicinal products. Oviya MedSafe offers complete and customized support in preparing and reviewing aggregate reports. The Periodic Safety Update Reports, Periodic Adverse Drug Experience Reports, Periodic Benefit-Risk Evaluation Reports & Development Safety Update Reports, prepared by our staff, present the safety information in a remarkable way that easily endorses the proper evaluation of the Benefit-Risk profile. These reports are prepared according to ICH requirements and filed with regulatory agencies per their regulatory norms.",
+               
             },
             {
                 id: 3,
@@ -93,25 +95,35 @@ export const strategyData = [
         id: 1,
         title: "PV Database Provision",
         image_id: ST1,
+        alt:"PV Database Provision services",
+        tit:"PV Database Provision - Supporting Pharmacovigilance Systems."
     },
     {
         id: 2,
         title: "Medical Writing",
         image_id: ST2,
+         alt:" medical cross and a pen symbolizing medical writing services",
+        tit:"Medical Writing - Professional Medical Documentation Services."
     },
     {
         id: 3,
         title: "CRO Services",
         image_id: ST3,
+        alt:"CRO services.",
+        tit:"CRO Services - Clinical Research Organization Support."
     },
     {
         id: 4,
         title: "Analytics and Research",
         image_id: ST4,
+        alt:"Analytics and Research - Data-Driven Insights for Healthcare.",
+        tit:"Analytics and Research"
     },
     {
         id: 5,
         title: "Regulatory Affairs",
         image_id: ST5,
+        alt:"Regulatory Affairs - Ensuring Compliance with Healthcare Regulations",
+        tit:"Regulatory Affairs"
     }
 ]
