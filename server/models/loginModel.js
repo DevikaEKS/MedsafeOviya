@@ -5,6 +5,18 @@ const getUserByUsername = async (email) => {
   return rows[0];
 };
 
-module.exports = {
-  getUserByUsername
+
+
+
+// Update password
+const updatePassword = async (email, newPassword) => {
+  try {
+    const query = 'UPDATE login SET password = ? WHERE username = ?';
+    await db.execute(query, [newPassword, email]);
+  } catch (error) {
+    throw new Error('Error updating password: ' + error.message);
+  }
 };
+
+
+module.exports = { getUserByUsername, updatePassword };

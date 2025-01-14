@@ -42,4 +42,37 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { login };
+
+
+
+
+
+
+// Update password function
+const updatePassword = async (req, res) => {
+  const { email, newPassword } = req.body;
+
+
+  try {
+    const user = await loginModel.getUserByUsername(email);
+
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+
+    await loginModel.updatePassword(email, newPassword);
+
+
+    res.status(200).json({ message: 'Password updated successfully' });
+  } catch (error) {
+    console.error('Error updating password:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+
+module.exports = { login, updatePassword };
+
+

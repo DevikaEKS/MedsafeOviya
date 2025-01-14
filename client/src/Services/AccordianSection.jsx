@@ -37,14 +37,14 @@ const AccordianSection = ({ index }) => {
               key={item.id}
               className="d-flex flex-column border-bottom py-3 px-4 cursor-pointer"
               onClick={() => clickHandle(item.id)}
-              style={{ minHeight: "80px",  borderColor: "var(--plus)", borderWidth: "1px", borderStyle: "solid" }}
+              style={{ minHeight: "80px",  borderColor: "var(--subhead2-color)", borderWidth: "1px", borderStyle: "solid" }}
             >
               <div className="row d-flex align-items-center justify-content-center">
                 {/* Icon Section: 1 grid */}
                 <div className="col-1"> 
                   <div
                     className="rounded-circle d-flex align-items-center justify-content-center bg-black "
-                    style={{ width: "36px", height: "36px", fontSize: "17px",  color: "var(--plus)" }}
+                    style={{ width: "36px", height: "36px", fontSize: "17px",  color: "var(--subhead2-color)" }}
                   >
                     {isExpanded ? <FaMinus /> : <FaPlus />}
                   </div>
@@ -54,7 +54,7 @@ const AccordianSection = ({ index }) => {
                 <div className="col-11">
                   <h1
                     className="text-capitalize acc-text-pad"
-                    style={{ fontSize: "20px", color: "var(--plus)" }}
+                    style={{ fontSize: "20px", color: "var(--subhead2-color)" }}
                   >
                     {item.title}
                   </h1>

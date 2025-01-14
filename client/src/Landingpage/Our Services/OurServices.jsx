@@ -29,6 +29,8 @@ function OurServices() {
       link: "/drug-safety-services",
       image: serv1,
       title: `DRUG SAFETY <br/> SERVICES`,
+      alt:"Pharmacovigilance Consultancy Services - Oviya MedSafe",
+      tit:" Explore Pharmacovigilance Consultancy with Oviya MedSafe",
       newContent: "With in-depth expertise of safety reporting in clinical studies and post-marketing surveillance, Oviya MedSafe provides comprehensive global drug safety services. From individual customized stand-alone services to diverse complex offerings, Oviya MedSafe provides solutions specific to the requirements of our clients.",
     },
     {
@@ -36,6 +38,8 @@ function OurServices() {
       link: "/pharmacovigilance-consulting",
       image: serv2,
       title: `PHARMACOVIGILANCE <br/> CONSULTING`,
+      alt:"Drug Safety Solutions - Oviya MedSafe",
+      tit:"Comprehensive Drug Safety Solutions",
       newContent: "Oviya MedSafe offers comprehensive global pharmacovigilance consulting solutions through regulatory compliance, higher productivity and strategic drug safety outcomes. Oviya MedSafe has the broad-based experience in pharmacovigilance domain to help you address product safety concerns in a confident, proactive manner, and operating experience to provide unparalleled support to our clients.",
     },
     {
@@ -43,6 +47,8 @@ function OurServices() {
       link: "/strategic-partnerships",
       image: serv3,
       title: `STRATEGIC <br/> PARTNERSHIPS`,
+      alt:"Strategic Partnerships in Pharmacovigilance – Oviya MedSafe",
+      tit:"Building strong alliances in the pharmaceutical industry through expertise and trust.",
       newContent: "Oviya MedSafe strongly believes strategic partnership as successful business tool with significant and sustainable value for all the parties in the alliance. Oviya MedSafe comes from rich background of entrepreneurship with 50 years of industry-leading knowledge in healthcare, education, engineering, and management domains. We understand better the competitive advantage in bringing technologies together across industries, engaging client’s needs, and harnessing collaborative knowledge of innovation. Our expertise in engagement strategies lies in flexibility and scalability of mutual individual needs of customers",
     },
   ];
@@ -68,8 +74,8 @@ function OurServices() {
                     <img
                       src={card.image}
                       className="card-img-top p-4"
-                      title="Explore Pharmacovigilance Consultancy with Oviya MedSafe,Comprehensive Drug Safety Solutions,Building strong alliances in the pharmaceutical industry through expertise and trust."
-                      alt="Service Image"
+                      title={card.tit}
+                      alt={card.alt}
                       style={{ borderRadius: "8px" }}
                     />
                     <div className="card-body text-center">

@@ -1,10 +1,10 @@
-
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Login.css";
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +12,6 @@ function Login() {
   const [passwordError, setPasswordError] = useState("");
   const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
-
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -20,7 +19,6 @@ function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-
     let isValid = true;
     setEmailError("");
     setPasswordError("");
@@ -74,8 +72,7 @@ function Login() {
   return (
     <div
       className="d-flex justify-content-center align-items-center"
-      style={{ backgroundColor: "#f8f9fa" }}
-    >
+      style={{ backgroundColor: "#f8f9fa" }}>
       <div
         className="card p-5 formbg rounded-5 border-0 m-3"
         style={{ borderRadius: "10px" }}
@@ -100,6 +97,7 @@ function Login() {
             />
             {emailError && <p className="text-danger mt-1">{emailError}</p>}
           </div>
+          
           <div className="mb-3">
             <label className="form-label text-light">Password</label>
             <input
@@ -117,6 +115,7 @@ function Login() {
             Login
           </button>
         </form>
+        <p className="text-center pt-4 text-decoration-none"><Link to="/forgot-password" className="text-light fw-bold text-decoration-none">Forgot Password ?</Link></p>
       </div>
       <ToastContainer />
     </div>

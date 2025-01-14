@@ -39,6 +39,7 @@ import Downloads from './Downloads/Downloads';
 import SwiperCard3D from './Landingpage/Videopart/SwiperCard3D';
 import Banner from './Banner/Banner';
 import BlogsUserView from './Blog/Blogbanner/BlogsUserView';
+import Admindata from './Admindata/Admindata';
 
 function App() {
 
@@ -59,16 +60,15 @@ function App() {
       <Route path='/strategic-partnerships' element={[<Contactpart/>,<Menubar/>,<Partnerships/>,<Footer/>,<Whatsapp/>]}/>
       <Route path='/careers' element={[<Contactpart/>,<Menubar/>,<Careers/>,<Careersdata/>,<Footer/>,<Whatsapp/>]} />
       <Route path="/updateblog/:id" element={<Updateblog/>}/>
-     <Route path='/addblog' element={<Addblog/>}/>
+      <Route path='/addblog' element={<Addblog/>}/>
       <Route path='/adminblog' element={<Adminblog/>}/>
-      
       <Route path='/adminview' element={[<Contactpart/>,<Menubar/>,<Adminblog />]}/>
       <Route path="/disclaimer-and-privacy-policy" element={[<Contactpart/>,<Menubar/>,<Privact/>,<Footer/>,<Whatsapp/>]}/>
-      <Route path='/forgot-password' element={<Forgotpassword/>}/>
+      <Route path='/forgot-password' element={[<Contactpart/>,<Menubar/>,<Forgotpassword/>,<Footer/>]}/>
       <Route path='/news' element={[<Contactpart/>,<Menubar/>,<BlogsUserView/>,<Footer/>,<Whatsapp/>]}/>
       <Route path='/news/:id' element={[<Contactpart />,<Menubar />,<Adminview/>,<Footer/>,<Whatsapp />]} />
       <Route path="/downloads" element={[<Contactpart/>,<Menubar/>,<Downloads/>,<Footer/>,<Whatsapp/>]}/>
-
+      <Route path="/admin" element={<Admindata/>}/>
     </Routes>
 
     </BrowserRouter>

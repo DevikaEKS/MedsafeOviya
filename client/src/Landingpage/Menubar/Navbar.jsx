@@ -17,8 +17,7 @@ const Navbar = () => {
         <div className='d-flex align-items-center gap-4'>
             <Link
                 to="/"
-                className={`custom-link text-white ${isActive('/') ? 'active' : ''}`}
-            >
+                className={`custom-link text-white ${isActive('/') ? 'active' : ''}`} >
                 HOME
             </Link>
 

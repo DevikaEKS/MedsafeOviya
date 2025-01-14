@@ -5,8 +5,6 @@ import LOGO from '../../assets/logoicon.png'
 import Navbar from './Navbar'
 import MobileNav from './MobileNav';
 import './Menubar.css'
-
-
 const Menubar = () => {
 
   const [hamToggle, setHamToggle] = useState(false);
@@ -23,7 +21,7 @@ const Menubar = () => {
         }}
       >
         <div>
-          <img src={LOGO} alt="Logo" />
+          <img src={LOGO} title='Oviya MedSafe company logo.' alt="Oviya MedSafe - Global Pharmacovigilance Consulting & Drug Safety Services" />
         </div>
         
         {/* Navbar */}

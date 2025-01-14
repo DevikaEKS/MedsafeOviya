@@ -1,0 +1,39 @@
+.table-sales th{
+    background-color: #17be81 !important;
+    color: #fff !important;
+    padding: 10px 2px;
+    border: 1px solid #17be81;
+    
+}
+.webinarleads{
+    color: var(--subhead2-color);
+    font-weight: 600;
+    font-family: 'Heebo', sans-serif;
+}
+.table-sales td{
+    padding: 10px 2px;
+    border: 1px solid rgb(12, 12, 12);
+    font-family: 'Proxima Nova', sans-serif !important;
+}
+
+
+
+.leadsdownloadbtn{
+    background-color: var(--gradientfrom);
+    color: #fff;
+    border: 0px;
+    border-radius: 5px;
+}
+.logouttxt{
+    color: #ED1C24;
+    text-decoration: none;
+}
+
+tr:nth-child(1n){
+    background-color: #7fb6a2 !important;
+}
+
+
+.tbpart{
+    background-color: #befbe0;
+}

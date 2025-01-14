@@ -21,7 +21,7 @@ function Footer() {
     }
 
     try {
-      const response = await fetch("http://192.168.253.110:5000/api/subscribe", {
+      const response = await fetch("http://localhost:5000/api/subscribe", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +52,7 @@ const years=now.getFullYear()
               <h4 className='footerhead py-3'>Location</h4>
               <h5 className='oviyafooter'>Oviya MedSafe Pvt Ltd</h5>
               <p className='pe-4'>2nd Floor, KTVR Gardens
-                220a-3, Marudha Konar Road Velandipalayam
+                220a-3,<br/> Marudha Konar Road Velandipalayam<br/>
                 Coimbatore – 641 025</p>
                 <h5 className='oviyafooter'>Oviya MedSafe UK Ltd</h5>
                 <p>Suite LP25393

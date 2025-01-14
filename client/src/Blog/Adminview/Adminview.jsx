@@ -19,7 +19,7 @@ const[email,setEmail]=useState("");
     // Fetch all news from the backend
     const fetchBlog = async () => {
       try {
-        const response = await fetch(`http://192.168.253.110:5000/api/news/${id}`);
+        const response = await fetch(`http://localhost:5000/api/news/${id}`);
         if (response.ok) {
           const data = await response.json();
           setBlog(data);
@@ -33,7 +33,7 @@ const[email,setEmail]=useState("");
 
     const fetchCourses = async () => {
       try {
-        const response = await fetch("http://192.168.253.110:5000/api/news");
+        const response = await fetch("http://localhost:5000/api/news");
         if (response.ok) {
           const data = await response.json();
           // Sort blogs by date in descending order and slice to get max 3 items
@@ -60,7 +60,7 @@ const[email,setEmail]=useState("");
     }
 
     try {
-      const response = await fetch("http://192.168.253.110:5000/api/subscribe", {
+      const response = await fetch("http://localhost:5000/api/subscribe", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +90,7 @@ const[email,setEmail]=useState("");
             <>
               <div className="d-flex justify-content-center">
                 <img
-                  src={`http://192.168.253.110:5000/uploads/${blog.image}`}
+                  src={`http://localhost:5000/uploads/${blog.image}`}
                   alt={blog.title}
                   className="imsp p-0 blogpartcontent m-0"
                 />
@@ -155,9 +155,7 @@ const[email,setEmail]=useState("");
               <Link
                 to={`/news/${relatedBlog.id}`}
                 key={relatedBlog.id}
-                style={{ textDecoration: "none" }}
-              >
-               
+                style={{ textDecoration: "none" }}>    
 
               <div className="card shadowcard my-2 p-2" style={{ position: 'relative' }}>
                   <div className="row">

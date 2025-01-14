@@ -26,6 +26,37 @@ const createForm = async (formData) => {
   }
 };
 
-module.exports = {
-  createForm
+
+
+// Fetch all forms
+const getAllForms = async () => {
+  try {
+    const query = `SELECT * FROM oviya_form`;
+    const [rows] = await db.query(query);
+    return rows;
+  } catch (error) {
+    throw new Error('Error fetching forms: ' + error.message);
+  }
 };
+
+
+// Fetch a form by ID
+const getFormById = async (id) => {
+  try {
+    const query = `SELECT * FROM oviya_form WHERE id = ?`;
+    const [rows] = await db.query(query, [id]);
+    return rows[0];
+  } catch (error) {
+    throw new Error('Error fetching form by ID: ' + error.message);
+  }
+};
+
+module.exports = { createForm, getAllForms, getFormById };
+
+
+
+
+
+
+
+

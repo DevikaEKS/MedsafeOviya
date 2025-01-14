@@ -46,4 +46,39 @@ const submitForm = async (req, res) => {
   }
 };
 
-module.exports = { submitForm };
+
+
+// Get all form entries
+const getAllForms = async (req, res) => {
+  try {
+    const forms = await formModel.getAllForms();
+    return res.status(200).json(forms);
+  } catch (error) {
+    console.error('Error fetching forms:', error);
+    return res.status(500).json({ error: error.message || 'Internal server error' });
+  }
+};
+
+
+// Get a form entry by ID
+const getFormById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const form = await formModel.getFormById(id);
+
+
+    if (!form) {
+      return res.status(404).json({ message: 'Form not found' });
+    }
+
+
+    return res.status(200).json(form);
+  } catch (error) {
+    console.error('Error fetching form by ID:', error);
+    return res.status(500).json({ error: error.message || 'Internal server error' });
+  }
+};
+
+
+module.exports = { submitForm, getAllForms, getFormById };
+;
