@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Blogbanner.css";
@@ -9,15 +8,12 @@ import { LuCircleUserRound } from "react-icons/lu";
 function Blogbanner() {
   const [blogs, setBlogs] = useState([]); 
   const navigate = useNavigate();
-
   useEffect(() => {
-
-    const fetchCourses = async () => {
+  const fetchCourses = async () => {
       try {
         const response = await fetch("http://localhost:5000/api/news");
         if (response.ok) {
           const data = await response.json();
-         
           const sortedBlogs = data
           .filter(blog => blog.publish === 1)
             .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -80,8 +76,7 @@ function Blogbanner() {
                   </h5>
                   <Link
                     className="px-2 readbtn my-2"
-                    to={`/news/${blog.id}`}
-                  >
+                    to={`/news/${blog.id}`}>
                     Read More
                   </Link>
                 </div>

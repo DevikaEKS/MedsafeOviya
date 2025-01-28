@@ -1,131 +1,67 @@
-// import React, { useState } from 'react';
-// import { useNavigate } from "react-router-dom";
-// import { ToastContainer,toast } from 'react-toastify';
-// import "react-toastify/dist/ReactToastify.css";
-// function Forgotpassword() {
-//   const [email, setEmail] = useState('');
-//   const [newPassword, setNewPassword] = useState('');
-//   const [retypePassword, setRetypePassword] = useState('');
-//   const [error, setError] = useState('');
-//   const navigate = useNavigate();
-
-//   const handlesubmit = (e) => {
-//     e.preventDefault();
-//     if (newPassword !== retypePassword) {
-//       setError('Passwords do not match');
-//       toast.error("Passwords do not match. Please enter the correct password.")
-//       return;
-//     }
-// toast.success("Password changed successfully")
-//     // Handle password change logic here
-//     console.log('Password changed successfully');
-//     navigate('/medsafelogin');
-//     setError('');
-   
-//   };
-
-//   return (
-//     <div className="container d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
-//       <div className="card p-5 formbg" style={{ width: '100%', maxWidth: '400px' }}>
-//         <h3 className="text-center mb-4 text-light">Forgot Password</h3>
-//         <form onSubmit={handlesubmit}>
-//           <div className="mb-3">
-//             <label htmlFor="email" className='text-light'>Enter your Email</label>
-//             <input
-//               type="email"
-//               id="email"
-//               className="form-control"
-//               value={email}
-//               onChange={(e) => setEmail(e.target.value)}
-//               required
-//             />
-//           </div>
-//           <div className="mb-3">
-//             <label htmlFor="newPassword" className='text-light'>New Password</label>
-//             <input
-//               type="password"
-//               id="newPassword"
-//               className="form-control"
-//               value={newPassword}
-//               onChange={(e) => setNewPassword(e.target.value)}
-//               required
-//             />
-//           </div>
-//           <div className="mb-3">
-//             <label htmlFor="retypePassword" className='text-light'>Retype Password</label>
-//             <input
-//               type="password"
-//               id="retypePassword"
-//               className="form-control"
-//               value={retypePassword}
-//               onChange={(e) => setRetypePassword(e.target.value)}
-//               required
-//             />
-//           </div>
-//           {error && <div className="text-light text-center mb-3">{error}</div>}
-//           <div className="text-center">
-//             <button type="submit" className="btn logbtn">Submit</button>
-//           </div>
-//         </form>
-//       </div>
-//       <ToastContainer/>
-//     </div>
-//   );
-// }
-
-// export default Forgotpassword;
-
-
-
-
-
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-
-function Forgotpassword() {
+import { RxEyeOpen } from "react-icons/rx";
+import { GoEyeClosed } from "react-icons/go";
+function ForgotPassword() {
+  
   const [email, setEmail] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [retypePassword, setRetypePassword] = useState('');
-  const [error, setError] = useState('');
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showRetypePassword, setShowRetypePassword] = useState(false);
   const navigate = useNavigate();
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
-  const handlesubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (newPassword !== retypePassword) {
-      setError('Passwords do not match');
-      toast.error("Passwords do not match. Please enter the correct password.");
+    if (!email) {
+      toast.error("Email is required. Please enter your email.");
       return;
     }
-    
+    if (!validateEmail(email)) {
+      toast.error("Invalid email format. Please enter a valid email.");
+      return;
+    }
+    if (!newPassword || !retypePassword) {
+      toast.error("Both password fields are required.");
+      return;
+    }
+    if (newPassword !== retypePassword) {
+      toast.error("Passwords do not match. Please re-enter the correct password.");
+      return;
+    }
+
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/update-password', {
+      const response = await axios.patch('http://localhost:5000/api/auth/update-password', {
         email,
-        password: newPassword,
+        newPassword, // Correctly send the new password
       });
 
       if (response.status === 200) {
-        toast.success("Password changed successfully");
-        navigate('/medsafelogin');
+        toast.success("Password changed successfully!");
+        setTimeout(() => navigate('/medsafelogin'), 2000);
       } else {
-        toast.error("Failed to reset password. Please try again.");
+        toast.error(response.data.message || "Failed to reset password. Please try again.");
       }
     } catch (error) {
       console.error("Error during password reset:", error);
-      toast.error("An error occurred. Please check your connection and try again.");
+      toast.error(error.response?.data?.message || "An error occurred. Please try again.");
     }
-    setError('');
   };
 
   return (
     <div className="container d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
-      <div className="card p-5 formbg" style={{ width: '100%', maxWidth: '400px' }}>
+      <div className="card p-5 formbg" style={{ width: '100%', maxWidth: '400px', backgroundColor: '#343a40', borderRadius: '10px' }}>
         <h3 className="text-center mb-4 text-light">Forgot Password</h3>
-        <form onSubmit={handlesubmit}>
+        <form onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="email" className='text-light'>Enter your Email</label>
+            <label htmlFor="email" className="text-light">Enter your Email</label>
             <input
               type="email"
               id="email"
@@ -133,39 +69,50 @@ function Forgotpassword() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-            />
+              placeholder="Enter your registered email"/>
           </div>
-          <div className="mb-3">
-            <label htmlFor="newPassword" className='text-light'>New Password</label>
+          <div className="mb-3 position-relative">
+            <label htmlFor="newPassword" className="text-light">New Password</label>
             <input
-              type="password"
+              type={showNewPassword ? "text" : "password"}
               id="newPassword"
               className="form-control"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               required
-            />
+              placeholder="Enter a new password"/>
+            <span
+              className="position-absolute end-0 top-50 translate-middle-y me-3 mt-2"
+              style={{ cursor: "pointer" }}
+              onClick={() => setShowNewPassword(!showNewPassword)}>
+              {showNewPassword ? <RxEyeOpen size={20} color="black" /> : <GoEyeClosed size={20} color="black" />}
+            </span>
           </div>
-          <div className="mb-3">
-            <label htmlFor="retypePassword" className='text-light'>Retype Password</label>
+          <div className="mb-3 position-relative">
+            <label htmlFor="retypePassword" className="text-light">Retype Password</label>
             <input
-              type="password"
+              type={showRetypePassword ? "text" : "password"}
               id="retypePassword"
               className="form-control"
               value={retypePassword}
               onChange={(e) => setRetypePassword(e.target.value)}
               required
-            />
+              placeholder="Re-enter your new password" />
+            <span
+              className="position-absolute end-0 top-50 translate-middle-y me-3 mt-2"
+              style={{ cursor: "pointer" }}
+              onClick={() => setShowRetypePassword(!showRetypePassword)}>
+              {showRetypePassword ? <RxEyeOpen size={20} color="black" /> : <GoEyeClosed size={20} color="black" />}
+            </span>
           </div>
-          {error && <div className="text-light text-center mb-3">{error}</div>}
           <div className="text-center">
-            <button type="submit" className="btn logbtn">Submit</button>
+            <button type="submit" className="logbtn btn mt-2 w-100">Reset</button>
           </div>
         </form>
       </div>
-      <ToastContainer />
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
     </div>
   );
 }
 
-export default Forgotpassword;
+export default ForgotPassword;

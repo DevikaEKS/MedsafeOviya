@@ -1,9 +1,12 @@
 .table-sales th{
-    background-color: #17be81 !important;
+    /* background: linear-gradient(to right,#17BE81,#09BBCC); */
     color: #fff !important;
     padding: 10px 2px;
     border: 1px solid #17be81;
     
+}
+tr th{
+    background: linear-gradient(to right,#17BE81,#09BBCC);   
 }
 .webinarleads{
     color: var(--subhead2-color);
@@ -30,7 +33,7 @@
 }
 
 tr:nth-child(1n){
-    background-color: #7fb6a2 !important;
+    background-color: #dcf8ec !important;
 }
 
 

@@ -99,7 +99,7 @@
 
 
 import React from 'react';
-import founderimg from "../assets/imgfounder.png";
+import founderimg from "../assets/Founderoviya.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import "./Founder.css";

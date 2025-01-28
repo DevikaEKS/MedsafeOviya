@@ -4,6 +4,8 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Login.css";
+import { RxEyeOpen } from "react-icons/rx";
+import { GoEyeClosed } from "react-icons/go";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -11,6 +13,7 @@ function Login() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [loginError, setLoginError] = useState("");
+  const [showpassword,setShowpassword]=useState(false);
   const navigate = useNavigate();
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -54,7 +57,7 @@ function Login() {
           window.location.href='/adminview'
         }
         else if(response.data.user.id===2){
-          window.location.href='/adminview'
+          window.location.href='/admin'
         }
         toast.success("Login successful");
       }
@@ -98,16 +101,48 @@ function Login() {
             {emailError && <p className="text-danger mt-1">{emailError}</p>}
           </div>
           
-          <div className="mb-3">
+          {/* <div className="mb-3 position-relative">
             <label className="form-label text-light">Password</label>
             <input
-              type="password"
+              type={setShowpassword? "text" : "password"}
               className="form-control"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter Password"
               required
             />
+             <span
+                          className="position-absolute end-0 top-50 translate-middle-y me-3 mt-2"
+                          style={{ cursor: "pointer" }}
+                          onClick={() => setShowpassword(!showpassword)}>
+                          {showpassword ? <RxEyeOpen size={20} color="black" /> : <GoEyeClosed size={20} color="black" />}
+                        </span>
+            {passwordError && <p className="text-danger mt-1">{passwordError}</p>}
+          </div>
+          {loginError && <p className="text-danger mt-1">{loginError}</p>} */}
+
+
+<div className="mb-3 position-relative">
+            <label className="form-label text-light">Password</label>
+            <input
+              type={showpassword ? "text" : "password"}
+              className="form-control"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter Password"
+              required
+            />
+            <span
+              className="position-absolute end-0 top-50 translate-middle-y me-3 mt-3"
+              style={{ cursor: "pointer" }}
+              onClick={() => setShowpassword(!showpassword)}
+            >
+              {showpassword ? (
+                <RxEyeOpen size={20} color="black" />
+              ) : (
+                <GoEyeClosed size={20} color="black" />
+              )}
+            </span>
             {passwordError && <p className="text-danger mt-1">{passwordError}</p>}
           </div>
           {loginError && <p className="text-danger mt-1">{loginError}</p>}

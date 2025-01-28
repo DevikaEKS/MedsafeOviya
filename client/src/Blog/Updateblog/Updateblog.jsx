@@ -2,91 +2,84 @@
 
 import React, { useState, useEffect } from 'react';
 import ReactQuill from 'react-quill';
-import { useParams } from 'react-router-dom';
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from 'react-router-dom';
-function Updateblog() {
-  // Initializing state for form values
+import { useParams, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-  const [blogData, setBlogData] = useState({});
+function Updateblog() {
   const [category, setCategory] = useState('');
   const [title, setTitle] = useState('');
   const [shortTitle, setShortTitle] = useState('');
-  const [imagePath, setImagePath] = useState('');
+  const [imagePath, setImagePath] = useState(''); // Stores the current image path
   const [content, setContent] = useState('');
-  const [blogImage, setBlogImage] = useState(null);
-  const navigate = useNavigate()
+  const [date, setDate] = useState('');
+  const [blogImage, setBlogImage] = useState(null); // Stores the selected file for upload
 
-  const {id} = useParams();
+  const navigate = useNavigate();
+  const { id } = useParams();
 
-  // GET LOGIC
-    useEffect(() => {
-      // Fetch all news from the backend
-      const fetchCourses = async () => {
-        try {
-          const response = await fetch(`http://localhost:5000/api/news/${id}`);
-          if (response.ok) {
-            const data = await response.json();
-            setCategory(data.category_id);
-            setTitle(data.news_title);
-            setShortTitle(data.news_short_title);
-            setImagePath(data.image);
-            setContent(data.news_content);
-                  } else {
-                    toast.error('Failed to fetch news');
-                  }
-                } catch (error) {
-                  toast.error('An error occurred while fetching news');
-                }
-              };
-              fetchCourses();
-            }, []);
+  useEffect(() => {
+    // Fetch existing blog details
+    const fetchBlogData = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/news/${id}`);
+        if (response.ok) {
+          const data = await response.json();
+          setCategory(data.category_id);
+          setTitle(data.news_title);
+          setShortTitle(data.news_short_title);
+          setImagePath(data.image);
+          setDate(data.date);
+          setContent(data.news_content);
+        } else {
+          toast.error('Failed to fetch news .');
+        }
+      } catch (error) {
+        toast.error('An error occurred while fetching news .');
+      }
+    };
 
-    console.log(blogData);
-  
-  
+    fetchBlogData();
+  }, [id]);
 
   const handleEditBlog = async (e) => {
-  
     e.preventDefault();
+
     const formData = new FormData();
-    formData.append('category_id', category)
+    formData.append('category_id', category);
     formData.append('news_title', title);
     formData.append('news_short_title', shortTitle);
-    formData.append('image', blogImage);
+    formData.append('date', date);
     formData.append('news_content', content);
+    if (blogImage) {
+      formData.append('image', blogImage); // Append file only if a new image is uploaded
+    }
+    console.log(blogImage)
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/news/${id}`,
-        {
-          method: 'PUT',
-          body: formData,
-        }
-      );
+      const response = await fetch(`http://localhost:5000/api/news/${id}`, {
+        method: 'PUT',
+        body: formData,
+      });
 
       if (response.ok) {
-        navigate('/adminblog')
-      
-        toast.success('Blog updated successfully.');
-        setEditCourse(null);
+        toast.success('News updated successfully.');
+        navigate('/adminblog');
       } else {
-        toast.error('Failed to BLog course.');
+        toast.error('Failed to update News.');
       }
     } catch (error) {
-      console.error('Error updating Blog:', error);
-      setMessage('An error occurred while updating the  blog.');
+      toast.error('An error occurred while updating the News.');
     }
   };
 
   const modules = {
     toolbar: [
-      [{ 'header': '1'}, {'header': '2'}, { 'font': [] }],
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      [{ 'align': [] }],
+      [{ header: '1' }, { header: '2' }, { font: [] }],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      [{ align: [] }],
       ['bold', 'italic', 'underline'],
-      ['link', 'image']
-    ]
+      ['link', 'image'],
+    ],
   };
 
   return (
@@ -95,10 +88,15 @@ function Updateblog() {
         <div className="form-group row mt-5 mb-2">
           <label className="col-sm-2">Category</label>
           <div className="col-sm-10">
-            <select className="form-control form-control1" value={category} onChange={(e) => setCategory(e.target.value)}>
+            <select
+              className="form-control form-control1"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              required
+            >
               <option value="">Select a category</option>
               <option value="1">Newsletter</option>
-              <option value="2">Annoucement</option>
+              <option value="2">Announcement</option>
               <option value="3">Articles</option>
             </select>
           </div>
@@ -112,6 +110,7 @@ function Updateblog() {
               className="form-control form-control1"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
+              required
             />
           </div>
         </div>
@@ -132,18 +131,33 @@ function Updateblog() {
         <div className="form-group row my-3">
           <label className="col-sm-2">News Image</label>
           <div className="col-sm-10">
-            {/* {imagePath && (
+            {imagePath && (
               <img
-              src={`http://192.168.253.110:5000/uploads/${blogImage}`}
+                src={`http://localhost:5000/uploads/${imagePath}`}
                 alt="Blog"
-                style={{ maxWidth: "100%", marginBottom: "10px" }}
+                style={{ maxWidth: '100%', marginBottom: '10px' }}
               />
-            )} */}
+            )}
             <input
               type="file"
               accept="image/*"
               className="form-control form-control1"
               onChange={(e) => setBlogImage(e.target.files[0])}
+            />
+          </div>
+        </div>
+
+        <div className="my-3 row form-group">
+          <label htmlFor="date" className="col-sm-2">
+            Date
+          </label>
+          <div className="col-sm-10">
+            <input
+              type="date"
+              id="date"
+              className="form-control form-control1"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
               required
             />
           </div>
@@ -171,7 +185,6 @@ function Updateblog() {
           </div>
         </div>
       </form>
-       {/* Toast Notification Container */}
       <ToastContainer />
     </div>
   );

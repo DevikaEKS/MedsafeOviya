@@ -27,7 +27,7 @@ function Contact() {
         {/* Address Section */}
         <div className="col-sm-12 col-md-6 d-flex flex-column justify-content-center align-items-start">
           <div className="row">
-          <h4 className='iconparas d-flex align-items-center py-3'> <FaLocationDot className="bg-light p-2 rounded-circle me-3 iconmail " />Address</h4>
+          <h4 className='iconparas d-flex align-items-center pt-3 pb-1'> <FaLocationDot className="bg-light p-2 rounded-circle me-3 iconmail " />Address</h4>
             <div className="col-sm-12 col-md-7">
              
               <p className='d-flex ps-3 ps-md-5'>
@@ -52,7 +52,7 @@ function Contact() {
           </div>
 
           {/* Email Support */}
-          <h4 className="d-flex align-items-center py-3 iconparas ">
+          <h4 className="d-flex align-items-center pt-2 pb-1 iconparas ">
             <IoMdMail className="bg-light p-2 rounded-circle me-3 iconmail" />
             Email Support
           </h4>
@@ -65,7 +65,7 @@ function Contact() {
           
 
           {/* Phone Support */}
-          <h4 className="d-flex align-items-center py-3  iconparas ">
+          <h4 className="d-flex align-items-center pt-2 pb-1 iconparas ">
             <HiPhone className="bg-light p-2 rounded-circle me-3 iconmail" />
             Phone
           </h4>

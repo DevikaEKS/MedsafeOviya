@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import "./Adminblog.css";
@@ -7,9 +6,6 @@ import { FaUserCircle } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-
-
 function Adminblog() {
   const [blogs, setBlogs] = useState([]);
   const [filteredBlogs, setFilteredBlogs] = useState([]);
@@ -18,13 +14,12 @@ function Adminblog() {
   const navigate = useNavigate();
   const {id} = useParams();
 
-
 // GET LOGIC
   useEffect(() => {
     // Fetch all news from the backend
     const fetchCourses = async () => {
       try {
-        const response = await fetch('http://192.168.253.110:5000/api/news');
+        const response = await fetch('http://localhost:5000/api/news');
         if (response.ok) {
           const data = await response.json();
           setBlogs(data);
@@ -42,7 +37,7 @@ function Adminblog() {
   //DELETE LOGIC
   const handleDeleteBlog = async (blogId) => {
     try {
-      const response = await fetch(`http://192.168.253.110:5000/api/news/${blogId}`, {
+      const response = await fetch(`http://localhost:5000/api/news/${blogId}`, {
         method: 'DELETE',
       });
 
@@ -61,8 +56,7 @@ function Adminblog() {
       toast.error('An error occurred while deleting the course.');
     }
   };
-
-  console.log(blogs);
+console.log(blogs);
 
   const handleCategoryClick = (category) => {
     setSelectedCategory(category);
@@ -101,13 +95,12 @@ function Adminblog() {
       return;
     }
 
-
     // New publish status (toggle the current status)
     const newPublishStatus = !blog.publish;
 
 
     try {
-      const response = await fetch(`http://192.168.253.110:5000/api/news/${id}/publish`, {
+      const response = await fetch(`http://localhost:5000/api/news/${id}/publish`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -186,7 +179,7 @@ function Adminblog() {
           <div key={blog.id} className="col-12 col-sm-6 col-lg-4 my-1">
             <div className="card shadowcard my-4 position-relative h-100">
               <img
-                src={`http://192.168.253.110:5000/uploads/${blog.image}`}
+                src={`http://localhost:5000/uploads/${blog.image}`}
                 alt={blog.news_title}
                 className="card-img-top p-0 m-0"
               />
@@ -213,8 +206,7 @@ function Adminblog() {
               Delete <MdDelete className="mx-1" />
               </button>
                 </div>
-              </div>
-              
+              </div>  
             </div>
           </div>
         ))}

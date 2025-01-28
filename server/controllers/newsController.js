@@ -25,8 +25,10 @@ exports.getNewsById = async (req, res) => {
 
 // Create new news
 exports.createNews = async (req, res) => {
+  
   try {
-    const { category_id, news_title, news_short_title, date, image, news_content } = req.body;
+    const { category_id, news_title, news_short_title, date, news_content } = req.body;
+    const image = req.file ? req.file.filename : null;
 
     // Validate required fields
     if (!category_id || !news_title || !news_short_title || !date || !news_content) {
@@ -49,23 +51,63 @@ exports.createNews = async (req, res) => {
 };
 
 // Update news by ID
+// exports.updateNews = async (req, res) => {
+//   try {
+//     const { category_id, news_title, news_short_title, news_content } = req.body;
+//     const image = req.file ? req.file.filename : null;
+//     const id=req.params.id;
+//     console.log(id)
+
+//     console.log("con",news_title,news_short_title,news_content,category_id,image)
+//     // Validate required fields
+//     if (!category_id || !news_title || !news_short_title || !date || !news_content) {
+//       return res.status(400).json({ message: "All fields except 'image' are required" });
+//     }
+
+//     const affectedRows = await newsModel.updateNews(id, {
+//       category_id,
+//       news_title,
+//       news_short_title,
+      
+//       image,
+//       news_content,
+//     });
+
+//     if (affectedRows === 0) {
+//       return res.status(404).json({ message: "News not found or no changes made" });
+//     }
+
+//     res.status(200).json({ message: "News updated successfully" });
+//   } catch (error) {
+//     res.status(500).json({ error: "Failed to update news" });
+//   }
+// };
 exports.updateNews = async (req, res) => {
   try {
-    const { category_id, news_title, news_short_title, date, image, news_content } = req.body;
-
+    const { category_id, news_title, news_short_title,date, news_content } = req.body;
+    const image = req.file ? req.file.filename : null;
+    const id = req.params.id;
     // Validate required fields
-    if (!category_id || !news_title || !news_short_title || !date || !news_content) {
+    if (!category_id || !news_title || !news_short_title || !date || !news_content ) {
       return res.status(400).json({ message: "All fields except 'image' are required" });
     }
 
-    const affectedRows = await newsModel.updateNews(req.params.id, {
+    // Prepare the update data
+    const updateData = {
       category_id,
       news_title,
       news_short_title,
-      date,
-      image,
       news_content,
-    });
+      date
+      
+    };
+
+    if (image) {
+      updateData.image = image; // Only add 'image' if a new file is uploaded
+    }
+
+    // Call the model to update the news
+    const affectedRows = await newsModel.updateNews(id, updateData);
 
     if (affectedRows === 0) {
       return res.status(404).json({ message: "News not found or no changes made" });
@@ -73,6 +115,7 @@ exports.updateNews = async (req, res) => {
 
     res.status(200).json({ message: "News updated successfully" });
   } catch (error) {
+    console.error("Error updating news:", error);
     res.status(500).json({ error: "Failed to update news" });
   }
 };
@@ -91,3 +134,29 @@ exports.deleteNews = async (req, res) => {
     res.status(500).json({ error: "Failed to delete news" });
   }
 };
+
+// Update publish field by ID
+exports.updatePublish = async (req, res) => {
+  try {
+    const { publish } = req.body;
+
+    // Validate required field
+    if (publish === undefined) {
+      return res.status(400).json({ message: "'publish' field is required" });
+    }
+
+    const affectedRows = await newsModel.updatePublish(req.params.id, publish);
+
+    if (affectedRows === 0) {
+      return res.status(404).json({ message: "News not found or no changes made" });
+    }
+
+    res.status(200).json({ message: "Publish status updated successfully" });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to update publish status" });
+  }
+};
+
+
+
+

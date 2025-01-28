@@ -1,13 +1,16 @@
-
-
 import React, { useState } from 'react'
-import LOGO from '../../assets/logoicon.png'
+import LOGO from '../../assets/logoov.png'
 import Navbar from './Navbar'
 import MobileNav from './MobileNav';
 import './Menubar.css'
 const Menubar = () => {
 
   const [hamToggle, setHamToggle] = useState(false);
+  const [query, setQuery] = useState('');
+
+  const handleSearch = (searchText) => {
+    navigate('/news', { state: { searchQuery: searchText } }); // Pass search text to blog page
+  };
   return (
     <div>
       {/* Desktop View */}
@@ -68,8 +71,9 @@ const Menubar = () => {
       >
         {/* Logo */}
         <div>
-          <img src={LOGO} alt="Logo" style={{ height: '60px' }} />
+          <img src={LOGO} alt="Logo" className='p-0 m-0' style={{ height: '60px'}}  />
         </div>
+       
 
         {/* Hamburger Menu */}
         <div
@@ -119,6 +123,7 @@ const Menubar = () => {
               type="text"
               className="form-control border-0"
               placeholder="Search"
+              onChange={(e) => handleSearch(e.target.value)}
               style={{
                 borderRadius: '0', // Ensures the input field does not override parent radius
                 outline: 'none', // Removes focus outline

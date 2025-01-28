@@ -79,7 +79,7 @@ font-weight: 600;
     
     .whytxt {
         font-size: 30px;
-        color: var(--color-testimonial); /* Adjust as necessary */
+        color: var(--subhead2-color);
     }
     
 }
@@ -101,6 +101,12 @@ font-weight: 600;
         font-size: 25px;
         font-weight: 600;
     }
+    .whytxt{
+        font-size: 55px;
+  }
+  .whytx{
+    font-size: 35px;
+  }
      
 }
 @media (min-width:501px) and (max-width:769px){

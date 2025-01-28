@@ -1,35 +1,12 @@
-// const subscribeModel = require('../models/subscribeModel'); // Import the model
-
-// // Controller to handle email subscription
-// exports.subscribeEmail = async (req, res) => {
-//   const { email } = req.body; // Get email from the request body
-
-//   try {
-//     // Call the model to insert the email into the database
-//     const result = await subscribeModel.addSubscription(email);
-
-//     // Respond with success if the email was successfully inserted
-//     return res.status(200).json({ message: 'Subscription successful', result });
-//   } catch (error) {
-//     // Handle errors and respond with a failure message
-//     return res.status(500).json({ message: 'Error storing email', error });
-//   }
-// };
-
-
-
 const subscribeModel = require('../models/subscribeModel');
 const nodemailer = require('nodemailer');
-
 
 // Subscribe to email
 exports.subscribeEmail = async (req, res) => {
   const { email } = req.body;
 
-
   try {
     const result = await subscribeModel.addSubscription(email);
-
 
     // Send a confirmation email to the subscriber
     const transporter = nodemailer.createTransport({
@@ -40,7 +17,6 @@ exports.subscribeEmail = async (req, res) => {
       },
     });
 
-
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: email,
@@ -48,7 +24,7 @@ exports.subscribeEmail = async (req, res) => {
       html: `
         <div style="display: flex;flex-direction: row;justify-content: center;">
     <div style="background-color: #17BE81;padding: 10px;border-radius: 10px;max-width: 500px;">
-       <p style="font-size: 20px;border-bottom:2px solid #fff"><b>Thank you for subscribing to our newsletter!</b><p>
+       <p style="font-size: 20px;border-bottom:2px solid #fff"><b>Thank you for subscribing to our newsletter!</b><p> 
        <p>We are delighted to have you as part of our community.</p>
        <p>We’re committed to delivering valuable information that supports your goals and keeps you informed.</p>
        <p>We look forward to connecting with you.</p>
@@ -56,16 +32,13 @@ exports.subscribeEmail = async (req, res) => {
       `,
     };
 
-
     await transporter.sendMail(mailOptions);
-
 
     return res.status(200).json({ message: 'Subscription successful and email sent', result });
   } catch (error) {
     return res.status(500).json({ message: 'Error storing email or sending email', error });
   }
 };
-
 
 // Get all subscriptions
 exports.getAllSubscriptions = async (req, res) => {
@@ -77,26 +50,19 @@ exports.getAllSubscriptions = async (req, res) => {
   }
 };
 
-
 // Get subscription by ID
 exports.getSubscriptionById = async (req, res) => {
   const { id } = req.params;
 
-
   try {
     const subscription = await subscribeModel.getSubscriptionById(id);
-
 
     if (!subscription) {
       return res.status(404).json({ message: 'Subscription not found' });
     }
-
 
     return res.status(200).json({ message: 'Subscription retrieved successfully', subscription });
   } catch (error) {
     return res.status(500).json({ message: 'Error retrieving subscription', error });
   }
 };
-
-
-

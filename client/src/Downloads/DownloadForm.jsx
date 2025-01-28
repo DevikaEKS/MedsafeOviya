@@ -1,11 +1,12 @@
-
-
-
-import React, { useState } from 'react';
-import axios from 'axios';
-import { toast } from 'react-toastify';  
+import { useState, useEffect } from 'react';
+import axios from 'axios';  
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const DownloadForm = () => {
+  const [generatedCode, setGeneratedCode] = useState('');
+  const [userInput, setUserInput] = useState('');
+  const [isVerified, setIsVerified] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
     designation: '',
@@ -17,16 +18,16 @@ const DownloadForm = () => {
 
   const [errors, setErrors] = useState({});
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  useEffect(() => {
+    const generateRandomCode = () => {
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+      return Array.from({ length: 5 }, () =>
+        characters.charAt(Math.floor(Math.random() * characters.length))
+      ).join('');
+    };
+    setGeneratedCode(generateRandomCode());
+  }, []);
 
-    // Trigger real-time validation on each input change
-    validateField(name, value);
-  };
 
   const validateField = (fieldName, value) => {
     let error = '';
@@ -52,6 +53,35 @@ const DownloadForm = () => {
     setErrors((prevErrors) => ({ ...prevErrors, [fieldName]: error }));
   };
 
+
+
+  const handleInputChange = (e) => {
+    const input = e.target.value;
+    setUserInput(input);
+
+    // Verify CAPTCHA input
+    if (input === generatedCode) setIsVerified(true);
+    else if (input.length === generatedCode.length) setIsVerified(false);
+    else setIsVerified(null);
+  };
+
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+
+    // Trigger real-time validation on each input change
+    validateField(name, value);
+  };
+
+
+
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -64,6 +94,10 @@ const DownloadForm = () => {
       }
     });
 
+    if (!isVerified) {
+      toast.error('CAPTCHA verification failed. Please try again.');
+      return;
+    }
     if (!hasErrors) {
       try {
         // Ensure phone_number is sent as a string
@@ -74,7 +108,7 @@ const DownloadForm = () => {
 
         const response = await axios.post('http://localhost:5000/api/submit-form', formDataToSend);
         if (response.status === 200) {
-          toast.success('Message sent successfully!');
+          toast.success('Form submitted successfully!');
           // Reset form fields after successful submission
           setFormData({
             name: '',
@@ -84,6 +118,9 @@ const DownloadForm = () => {
             email: '',
             form_id: 2,
           });
+          setUserInput('');
+          setGeneratedCode(''); // Reset CAPTCHA
+          setIsVerified(null);
         }
       } catch (error) {
         if (error.response) {
@@ -112,6 +149,7 @@ const DownloadForm = () => {
           name="name"
           value={formData.name}
           onChange={handleChange}
+          required
         />
         {errors.name && <div className="text-danger">{errors.name}</div>}
       </div>
@@ -152,6 +190,7 @@ const DownloadForm = () => {
           name="phone_number"
           value={formData.phone_number}
           onChange={handleChange}
+          required
         />
         {errors.phone_number && <div className="text-danger">{errors.phone_number}</div>}
       </div>
@@ -166,16 +205,38 @@ const DownloadForm = () => {
           name="email"
           value={formData.email}
           onChange={handleChange}
+          required
         />
         {errors.email && <div className="text-danger">{errors.email}</div>}
       </div>
-<div className='mb-4'><button
-        type="submit"
-        className="custom-btn btn btn-primary btn-width"
-      >
-        Download PDF
-      </button></div>
-      
+
+
+
+      <div className="form-group mt-3">
+          <label htmlFor="captcha">Captcha: </label>
+         <div className='d-flex justify-content-between'>
+          <div className='text-black text-center p-3'>
+            <strong>{generatedCode}</strong>
+          </div>
+          <input
+            type="text"
+            id="captcha"
+            value={userInput}
+            onChange={handleInputChange}
+            className="form-control"
+            placeholder="Enter CAPTCHA"
+            required
+          />
+           </div>
+          {isVerified === false && <small className="text-danger ms-5 ps-4">CAPTCHA does not match.</small>}
+        </div>
+
+
+        <div className="form-group mt-4">
+          <button type="submit" className="custom-btn btn btn-primary btn-width" disabled={isVerified !== true}>
+          Download PDF
+          </button>
+        </div> 
     </form>
   );
 };

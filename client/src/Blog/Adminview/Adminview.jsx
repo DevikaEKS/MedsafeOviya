@@ -14,7 +14,6 @@ const[email,setEmail]=useState("");
 
 // GET LOGIC
   useEffect(() => {
-
     window.scroll(0,0)
     // Fetch all news from the backend
     const fetchBlog = async () => {

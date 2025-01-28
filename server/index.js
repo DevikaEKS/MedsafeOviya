@@ -15,8 +15,8 @@ const app = express();
 
 // Enable CORS before any routes or middleware
 app.use(cors({
-  origin: ["http://13.233.165.171","http://localhost:3000","http://localhost:5173"], // Allowed origins
-  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+  origin: ["http://192.168.252.245:5173","http://192.168.254.144:5173","http://localhost:3000","http://192.168.254.144:5174","http://localhost:5173","http://160.153.172.25",process.env.ORIGIN], // Allowed origins
+  methods: ["GET", "POST", "PUT", "DELETE","PATCH"], // Allowed HTTP methods
   allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
   credentials: true, // Allow cookies and credentials
 }));
@@ -34,9 +34,6 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 app.use("/api/news", newsRoutes);
 app.use('/api', subscribeRoutes);
 
-app.get('/api/check',(req,res)=>{
-  res.json({msg:"backed is working"})
-})
 // Start Server and connect to MySQL
 db.query("SELECT 1")
   .then(() => {

@@ -20,7 +20,7 @@ function AboutFounder() {
             
             <div className='row mx-1 mx-md-5 my-0 py-3'>  
             <div className='col-sm-12 col-md-6 '>
-            <h1 className='whytx'><span className='whytxt'>WHY </span><span className='subhead2'>Oviya<br/> MedSafe ?</span></h1>
+            <h1 className='whytx'><span className='whytxt'>WHY </span><span className='subhead2'>Oviya  MedSafe ?</span></h1>
             <img src={research} className='researchimg'/>
                 </div>
                 <div className='col-sm-12 col-md-6 d-flex flex-column justify-content-center align-items-center pt-5'>

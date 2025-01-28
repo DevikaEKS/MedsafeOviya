@@ -1,7 +1,7 @@
 import React from 'react';
-import founder1 from "../assets/founder1.png";
-import founder2 from "../assets/founder2.png";
-import founder3 from "../assets/founder3.png";
+import founder1 from "../assets/bg1.png";
+import founder2 from "../assets/Facebg.png";
+import founder3 from "../assets/bg3.png";
 import "./AboutFounder.css";
 import { Helmet } from 'react-helmet';
 function BoardMembers() {
@@ -9,12 +9,12 @@ function BoardMembers() {
     name: 'Dr J Vijay Venkatraman',
     position: "Founder",
     bio: `MBBS, F. Diab., MBA, FPIPA (UK)<br/> Managing Director & CEO,<br/>Oviya MedSafe`,
-    img: founder2
+    img: founder1
    }, {
     name: 'Dr V Janarthanan',
     position: "Chairman, Oviya MedSafe",
     bio: `MS, FICS, FAIS<br/>Chief Surgeon & Managing Director,<br/> KTVR Group Hospital <br/> Coimbatore, India`,
-    img: founder1
+    img: founder2
    },
    {
     name: 'Dr C J Arun Raja',

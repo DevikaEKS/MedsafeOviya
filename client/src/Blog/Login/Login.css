@@ -33,6 +33,10 @@
     background-color: var(--blog-bgcolor);
 }
 
+.logbtn:hover{
+  color: var(--subhead2-color);
+    background-color: var(--blog-bgcolor);
+}
 
 /* Adjust for smaller screens */
 @media (max-width: 767px) {

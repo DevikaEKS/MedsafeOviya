@@ -3,15 +3,10 @@ const db = require('../config/db');
 // Create a function to insert form data
 const createForm = async (formData) => {
   try {
-    const { name, designation, organization, email, phone_number, message, form_type } = formData;
-
+    const { name, designation, organization, email, phone_number, message, form_id } = formData;
+    
     // Determine form_id based on form_type
-    let form_id = null;
-    if (form_type === 1) {
-      form_id = 1; // Contact form
-    } else if (form_type === 2) {
-      form_id = 2; // Downloads form
-    }
+    
 
     // SQL query to insert form data into the oviya_form table
     const query = `INSERT INTO oviya_form (name, designation, organization, email, phone_number, message, form_id)
@@ -27,19 +22,25 @@ const createForm = async (formData) => {
 };
 
 
-
 // Fetch all forms
 const getAllForms = async () => {
   try {
-    const query = `SELECT * FROM oviya_form`;
+    const query = `SELECT id,name,designation,organization,email,phone_number,message,timestamp FROM oviya_form where form_id=1`;
     const [rows] = await db.query(query);
     return rows;
   } catch (error) {
     throw new Error('Error fetching forms: ' + error.message);
   }
 };
-
-
+const getAllFormsdownload = async () => {
+  try {
+    const query = `SELECT id,name,designation,organization,email,phone_number,timestamp FROM oviya_form where form_id=2`;
+    const [rows] = await db.query(query);
+    return rows;
+  } catch (error) {
+    throw new Error('Error fetching forms: ' + error.message);
+  }
+};
 // Fetch a form by ID
 const getFormById = async (id) => {
   try {
@@ -51,12 +52,7 @@ const getFormById = async (id) => {
   }
 };
 
-module.exports = { createForm, getAllForms, getFormById };
-
-
-
-
-
+module.exports = { createForm, getAllForms, getFormById,getAllFormsdownload };
 
 
 
